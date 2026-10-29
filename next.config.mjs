@@ -7,8 +7,8 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
-  cacheComponents: true,
-  partialPrefetching: true,
+  // cacheComponents: true,
+  // partialPrefetching: false,
   reactCompiler: true,
   turbopack: {
     rules: {
