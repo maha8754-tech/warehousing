@@ -12,7 +12,7 @@ export default function Sidebar( {activePage , setActivePage}) {
         <div className="flex flex-col fixed bg-white/80 shadow-xl w-65 h-screen rounded-4xl ml-2">
             <LiquidGlass className="min-h-[99.8vh]" radius={18} bezel={120} tint="rgba(0,0,0,0.55)" saturation={1.5} interactive>
                 <header className="">
-                    <img className="" src="/stock-pro.png" alt="logo"/>
+                    <img className="" src="/warehousing/stock-pro.png" alt="logo"/>
                 </header>
                 <main className="grid gap-5">
                     {/* ========== Dashboard ================ */}
