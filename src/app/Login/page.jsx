@@ -16,13 +16,13 @@ const imageLS = [
 ]
 
 export default function Login(){
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [checkingEmail, setCheckingEmail] = useState(false);
-    // const [emailStatus, setEmailStatus] = useState(null); // null | 'exists' | 'not-found'
-    // const [userImage, setUserImage] = useState(null);
-    // const [userName, setUserName] = useState('');
-    // const [loginMessage, setLoginMessage] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [checkingEmail, setCheckingEmail] = useState(false);
+    const [emailStatus, setEmailStatus] = useState(null); // null | 'exists' | 'not-found'
+    const [userImage, setUserImage] = useState(null);
+    const [userName, setUserName] = useState('');
+    const [loginMessage, setLoginMessage] = useState('');
     // const [loading, setLoading] = useState(false);
 
     
@@ -87,19 +87,19 @@ export default function Login(){
 
     const [image , setImage] = useState("");
     const [home , setHome] = useState(false)
-//     const [formLs , setFormLs] = useState("login")
-//     const [formData, setFormData] = useState({
-//       fullName: '',
-//       email: '',
-//       password: '',
-//       mobile: '',
-//       image: '',
-//   });
+    const [formLs , setFormLs] = useState("login")
+    const [formData, setFormData] = useState({
+      fullName: '',
+      email: '',
+      password: '',
+      mobile: '',
+      image: '',
+  });
     
-//     const [imageFile, setImageFile] = useState('null');
-//     const [imagePreview, setImagePreview] = useState('null');
-//     const [message, setMessage] = useState('');
-//     const [loading, setLoading] = useState(false);
+    const [imageFile, setImageFile] = useState('null');
+    const [imagePreview, setImagePreview] = useState('null');
+    const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
