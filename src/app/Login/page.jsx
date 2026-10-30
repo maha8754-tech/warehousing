@@ -226,7 +226,7 @@ export default function Login(){
                       placeholder="example@gmail.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      onBlur={handleEmailBlur}
+                    //   onBlur={handleEmailBlur}
                       pattern="[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]{2,}"
                       className="bg-black/50 w-80 h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                     />
@@ -282,7 +282,8 @@ export default function Login(){
                 <div className="flex -mt-22 items-center justify-center bg-purple-300 w-30 h-30 rounded-full">
                   <h1 className=" flex text-2xl text-center">CRWEB</h1>
                 </div>
-                <form onSubmit={handleSubmit} className="flex flex-col w-143 items-center-safe mt-15 justify-center gap-3">
+                {/* onSubmit={handleSubmit} */}
+                <form className="flex flex-col w-143 items-center-safe mt-15 justify-center gap-3">
                   <div className="grid grid-cols-2 gap-2 w-full">
                     <div className="flex flex-col gap-2">
                       <label htmlFor="Name" className="text-sm text-red-600">
@@ -295,7 +296,7 @@ export default function Login(){
                         autoComplete="name"
                         placeholder="علی مرتضوی"
                         value={formData.fullName}
-                        onChange={handleChange}
+                        // onChange={handleChange}
                         // pattern="09[0-9]{9}"
                         className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                       />
@@ -312,7 +313,7 @@ export default function Login(){
                         autoComplete="email"
                         placeholder="example@gmail.com"
                         value={formData.email}
-                        onChange={handleChange}
+                        // onChange={handleChange}
                         pattern="[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]{2,}"
                         className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                       />
@@ -329,7 +330,7 @@ export default function Login(){
                         // autoComplete="phone"
                         // placeholder=""
                         value={formData.password}
-                        onChange={handleChange}
+                        // onChange={handleChange}
                         pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@&$]).{8,}"
                         className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                       />
@@ -346,7 +347,7 @@ export default function Login(){
                         autoComplete="phone"
                         placeholder="09xxxxxxxxx"
                         value={formData.mobile}
-                        onChange={handleChange}
+                        // onChange={handleChange}
                         pattern="09[0-9]{9}"
                         className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                       />
@@ -365,7 +366,7 @@ export default function Login(){
                         // autoComplete="phone"
                         // placeholder="09xxxxxxxxx"
                         // value={formData.mobile}
-                        onChange={handleImageChange}
+                        // onChange={handleImageChange}
                         // pattern="09[0-9]{9}"
                         className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                       />
