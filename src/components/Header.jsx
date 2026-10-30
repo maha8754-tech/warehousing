@@ -100,7 +100,7 @@ export default function Header({activePage}) {
             {isOpan && (
             <div className="flex flex-col fixed gap-y-2 bg-white w-65 h-75 right-5 top-1/8 rounded-2xl">
                 <header className="flex items-center h-15 gap-x-3.5">
-                    <img src="/hatamTehrani.jpg" alt="profile" className="ml-2 w-10 h-10 rounded-4xl"/>
+                    <img src="/warehousing/hatamTehrani.jpg" alt="profile" className="ml-2 w-10 h-10 rounded-4xl"/>
                     <div className="grid">
                         <h3 className="text-[15px] font-bold mr-10">Mahdi rush</h3>
                         <span className="text-sm text-gray-400">mah12@gmail.com</span>
