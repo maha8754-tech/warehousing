@@ -29,10 +29,10 @@ export default function Sidebar( {activePage , setActivePage}) {
                     </div>
                     {/* ============== Products =============== */}
                     <div className="grid grid-cols-[1%_99%]">
-                        <div className={activePage === "Products" ? "bg-purple-600 w-2 rounded-r-4xl" : "hidden"}></div>
+                        <div className={activePage === "Products" ? "bg-blue-600 w-2 rounded-r-4xl" : "hidden"}></div>
                         <ul className="ml-5">
-                            <li onClick={() => setActivePage("Products")} className={activePage === "Products" ? "flex gap-5 items-center-safe bg-purple-400/32 text-purple-800 p-2 rounded-xl" : "flex gap-5 text-black cursor-pointer p-2 hover:bg-black/20 rounded-xl w-60"}>
-                                <div className={activePage === "Products" ? "bg-purple-500 text-purple-800 p-1 rounded-md" : ""}>
+                            <li onClick={() => setActivePage("Products")} className={activePage === "Products" ? "flex gap-5 items-center-safe bg-blue-400/32 text-blue-800 p-2 rounded-xl" : "flex gap-5 text-black cursor-pointer p-2 hover:bg-black/20 rounded-xl w-60"}>
+                                <div className={activePage === "Products" ? "bg-blue-500 text-blue-800 p-1 rounded-md" : ""}>
                                     <TagPlus/>
                                 </div>
                                 Products
@@ -41,10 +41,10 @@ export default function Sidebar( {activePage , setActivePage}) {
                     </div>
                     {/* ============== Stock =============== */}
                     <div className="grid grid-cols-[1%_99%]">
-                        <div className={activePage === "Stock" ? "bg-purple-600 w-2 rounded-r-4xl" : "hidden"}></div>
+                        <div className={activePage === "Stock" ? "bg-blue-600 w-2 rounded-r-4xl" : "hidden"}></div>
                         <ul className="ml-5">
-                            <li onClick={() => setActivePage("Stock")} className={activePage === "Stock" ? "flex gap-5 items-center-safe bg-purple-400/32 text-purple-800 p-2 rounded-xl" : "flex gap-5 text-black cursor-pointer p-2 hover:bg-black/20 rounded-xl w-60"}>
-                                <div className={activePage === "Stock" ? "bg-purple-500 text-purple-800 p-1 rounded-md" : ""}>
+                            <li onClick={() => setActivePage("Stock")} className={activePage === "Stock" ? "flex gap-5 items-center-safe bg-blue-400/32 text-blue-800 p-2 rounded-xl" : "flex gap-5 text-black cursor-pointer p-2 hover:bg-black/20 rounded-xl w-60"}>
+                                <div className={activePage === "Stock" ? "bg-blue-500 text-blue-800 p-1 rounded-md" : ""}>
                                     <Boxes/>
                                 </div>
                                 Stock
@@ -53,10 +53,10 @@ export default function Sidebar( {activePage , setActivePage}) {
                     </div>
                     {/* ============== Movements =============== */}
                     <div className="grid grid-cols-[1%_99%]">
-                        <div className={activePage === "Movements" ? "bg-purple-600 w-2 rounded-r-4xl" : "hidden"}></div>
+                        <div className={activePage === "Movements" ? "bg-blue-600 w-2 rounded-r-4xl" : "hidden"}></div>
                         <ul className="ml-5">
-                            <li onClick={() => setActivePage("Movements")} className={activePage === "Movements" ? "flex gap-5 items-center-safe bg-purple-400/32 text-purple-800 p-2 rounded-xl" : "flex gap-5 text-black cursor-pointer p-2 hover:bg-black/20 rounded-xl w-60"}>
-                                <div className={activePage === "Movements" ? "bg-purple-500 text-purple-800 p-1 rounded-md" : ""}>
+                            <li onClick={() => setActivePage("Movements")} className={activePage === "Movements" ? "flex gap-5 items-center-safe bg-blue-400/32 text-blue-800 p-2 rounded-xl" : "flex gap-5 text-black cursor-pointer p-2 hover:bg-black/20 rounded-xl w-60"}>
+                                <div className={activePage === "Movements" ? "bg-blue-500 text-blue-800 p-1 rounded-md" : ""}>
                                     <ArrowLeftRight/>
                                 </div>
                                 Movements
