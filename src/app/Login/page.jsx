@@ -6,13 +6,13 @@ import { useEffect , useState } from "react";
 
 
 const imageLS = [
-  "them1.jpg",
-  "them2.jpg",
-  "them3.jpg",
-  "them4.jpg",
-  "them5.jpg",
-  "them6.jpg",
-  "them7.jpg"
+  "/warehousing/them1.jpg",
+  "/warehousing/them2.jpg",
+  "/warehousing/them3.jpg",
+  "/warehousing/them4.jpg",
+  "/warehousing/them5.jpg",
+  "/warehousing/them6.jpg",
+  "/warehousing/them7.jpg"
 ]
 
 export default function Login(){
