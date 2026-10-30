@@ -17,10 +17,10 @@ export default function Sidebar( {activePage , setActivePage}) {
                 <main className="grid gap-5">
                     {/* ========== Dashboard ================ */}
                     <div className="grid grid-cols-[1%_99%]">
-                        <div className={activePage === "Dashboard" ? "bg-purple-600 w-2 rounded-r-4xl" : "hidden"}></div>
+                        <div className={activePage === "Dashboard" ? "bg-blue-600 w-2 rounded-r-4xl" : "hidden"}></div>
                         <ul className="ml-5">
-                            <li onClick={() => setActivePage("Dashboard")} className={activePage === "Dashboard" ? "flex gap-5 items-center-safe bg-purple-400/32 text-purple-800 p-2 rounded-xl" : "flex gap-5 text-black cursor-pointer p-2 hover:bg-black/20 rounded-xl w-60"}>
-                                <div className={activePage === "Dashboard" ? "bg-purple-500 text-purple-800 p-1 rounded-md" : ""}>
+                            <li onClick={() => setActivePage("Dashboard")} className={activePage === "Dashboard" ? "flex gap-5 items-center-safe bg-blue-400/32 text-blue-800 p-2 rounded-xl" : "flex gap-5 text-black cursor-pointer p-2 hover:bg-black/20 rounded-xl w-60"}>
+                                <div className={activePage === "Dashboard" ? "bg-blue-500 text-blue-800 p-1 rounded-md" : ""}>
                                     <LayoutDashboard/>
                                 </div>
                                 Dashboard
