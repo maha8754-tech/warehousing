@@ -89,7 +89,7 @@ export default function Header({activePage}) {
                     <Bell size={17} className=""/>
                 </div>
                 <div onClick={() => setIsOpen(!isOpan)} className="flex items-center cursor-pointer bg-[#ebf1f5] rounded-3xl w-47 h-12 gap-x-3">
-                    <img src="/hatamTehrani.jpg" alt="profile" className="ml-2 w-10 h-10 rounded-4xl"/>
+                    <img src="/warehousing/hatamTehrani.jpg" alt="profile" className="ml-2 w-10 h-10 rounded-4xl"/>
                     <div className="grid">
                         <h3 className="text-[15px] font-bold">Mahdi rush</h3>
                         <span className="text-sm text-gray-400">Administrator</span>
@@ -97,7 +97,7 @@ export default function Header({activePage}) {
                     <ChevronDownCircle size={16} className="text-gray-600"/>
                 </div>
             </div>
-            {isOpan && (
+            {!isOpan && (
             <div className="flex flex-col fixed gap-y-2 bg-white w-65 h-75 right-5 top-1/8 rounded-2xl">
                 <header className="flex items-center h-15 gap-x-3.5">
                     <img src="/warehousing/hatamTehrani.jpg" alt="profile" className="ml-2 w-10 h-10 rounded-4xl"/>
