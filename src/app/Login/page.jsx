@@ -211,7 +211,8 @@ export default function Login(){
                     <h1 className=" flex text-2xl text-center">CRWEB</h1>
                   </div>
                 </div>
-                <form onSubmit={handleLogin} className="flex flex-1 flex-col -mt-12 justify-center gap-3">
+                {/* onSubmit={handleLogin} */}
+                <form className="flex flex-1 flex-col -mt-12 justify-center gap-3">
 
                   <div className="flex flex-col gap-2">
                     <label htmlFor="Email" className="text-sm text-red-600">
