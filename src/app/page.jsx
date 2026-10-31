@@ -10,7 +10,7 @@ import Dashboard from "./Dashboard/page";
 
 export default function Home() {
     const [activePage , setActivePage] = useState("Dashboard")
-    const backUI = "bg-[radial-gradient(ellipse_at_top_left,rgba(147,197,253,0.25),transparent_45%),radial-gradient(ellipse_at_bottom_right,rgba(96,165,250,0.18),transparent_45%),linear-gradient(135deg,#f8fbff_0%,#edf5ff_50%,#f5f9ff_100%)] h-screen grid grid-cols-[290px_1fr] grid-rows-[70px_1fr]"
+    const backUI = "bg-[radial-gradient(ellipse_at_top_left,rgba(147,197,253,0.25),transparent_45%),radial-gradient(ellipse_at_bottom_right,rgba(96,165,250,0.18),transparent_45%),linear-gradient(135deg,#f8fbff_0%,#edf5ff_50%,#f5f9ff_100%)] h-screen grid grid-cols-[275px_1fr] grid-rows-[70px_1fr]"
   return(
   <div className={backUI}>
     <aside className="row-span-2">
@@ -25,7 +25,7 @@ export default function Home() {
           activePage={activePage}
         />
       </header>
-      <main className="grid mt-5">
+      <main className="grid mt-2">
         {activePage === "Dashboard" && (
           <Dashboard/>
         )}
