@@ -1,4 +1,4 @@
-using System;
+/*using System;
 public class User {
 	private int userId;
 	private string fullName;
@@ -17,3 +17,4 @@ public class User {
 	private Stock_movement 1;
 
 }
+*/

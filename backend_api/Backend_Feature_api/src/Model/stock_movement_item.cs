@@ -1,4 +1,4 @@
-using System;
+/*using System;
 public class Stock_movement_item {
 	private int lineId;
 	private int quantity;
@@ -12,3 +12,4 @@ public class Stock_movement_item {
 	private Stock_movement 1;
 
 }
+*/

@@ -1,4 +1,4 @@
-using System;
+/*using System;
 public class Stock {
 	protected int stockId;
 	protected int quantity;
@@ -25,3 +25,4 @@ public class Stock {
 	private Report_controller report controller;
 
 }
+*/

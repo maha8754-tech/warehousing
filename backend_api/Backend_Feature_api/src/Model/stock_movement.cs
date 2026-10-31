@@ -1,4 +1,4 @@
-using System;
+/*using System;
 public class Stock_movement {
 	protected int movementId;
 	protected datetime movementDate;
@@ -18,3 +18,4 @@ public class Stock_movement {
 	private Report_controller report controller;
 
 }
+*/

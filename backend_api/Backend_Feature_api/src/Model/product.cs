@@ -1,4 +1,4 @@
-using System;
+/*using System;
 public class Product {
 	private int productId;
 	private string productCode;
@@ -24,3 +24,4 @@ public class Product {
 	private Stock_movement_item 1;
 
 }
+*/

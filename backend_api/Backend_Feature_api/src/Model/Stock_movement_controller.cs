@@ -1,4 +1,4 @@
-using System;
+/*using System;
 public class Stock_movement_controller {
 	public void ProcessStockIn() {
 		throw new System.Exception("Not implemented");
@@ -19,3 +19,4 @@ public class Stock_movement_controller {
 	private Stock_movment_Ui stock_movment_Ui;
 
 }
+*/

@@ -1,4 +1,4 @@
-using System;
+/*using System;
 public class Report_controller {
 	public void GenerateInventoryReport() {
 		throw new System.Exception("Not implemented");
@@ -16,3 +16,4 @@ public class Report_controller {
 	private Inventory_report_UI inventory_report_UI;
 
 }
+*/
