@@ -107,7 +107,7 @@ export default function Header({activePage}) {
                     </div>
                 </header>
                 {/* ================ seperator ===================== */}
-                <div className="w-65 border-b border-gray-200"></div>
+                <div className="w-65 border-b border-gray-200 z-50"></div>
                 <main className="grid items-center h-40">
                         <ul className="grid gap-y-5 ml-3">
                             <li onClick={() => setModalOpen(true)} className="flex items-center rounded-lg gap-x-4 h-10 hover:bg-blue-200 hover:text-blue-700 cursor-pointer">
