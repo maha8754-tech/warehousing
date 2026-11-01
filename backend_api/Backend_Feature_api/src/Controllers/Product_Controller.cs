@@ -1,5 +1,8 @@
-﻿using Backend_Feature_api.src.dbcontext;
+﻿using Backend_Feature_api.DTO.Product_DTO;
+using Backend_Feature_api.src.dbcontext;
+using Backend_Feature_api.src.Mapper;
 using Microsoft.AspNetCore.Mvc;
+using warehouse.Models;
 
 namespace Backend_Feature_api.src.Controllers
 {
@@ -33,5 +36,18 @@ namespace Backend_Feature_api.src.Controllers
 
             return Ok(Product);
         }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] CreateProductDTO productDTO)
+        {
+            var product = productDTO.ToProduct();
+
+            _context.product.Add(product);
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(GetById), new { id = product.ProductId }, product);
+        }
+
+
     }
 }

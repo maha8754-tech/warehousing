@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace YourProject.Models;
+namespace warehouse.Models;
 
 public class Product
 {

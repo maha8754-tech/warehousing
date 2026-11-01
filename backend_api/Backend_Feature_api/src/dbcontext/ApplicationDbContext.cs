@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using YourProject.Models;
+using warehouse.Models;
 
 namespace Backend_Feature_api.src.dbcontext
 {
