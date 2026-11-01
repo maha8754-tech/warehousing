@@ -20,5 +20,18 @@ namespace Backend_Feature_api.src.Controllers
 
             return Ok(Products);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById([FromRoute]int id)
+        {
+            var Product = _context.product.FirstOrDefault(i => i.ProductId == id);
+
+            if(Product == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(Product);
+        }
     }
 }
