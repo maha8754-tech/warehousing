@@ -55,7 +55,7 @@ export default function Products() {
           {/* row 3 */}
           <div className="">
             <table className="grid m-auto w-257">
-                        <thead className="grid h-8 rounded-t-2xl text-gray-500 sticky top-0 bg-blue-100 border-b-2 border-gray-300">
+                        <thead className="grid h-8 rounded-t-2xl text-gray-500 sticky top-0 bg-blue-100 border-b-2 border-gray-300 z-1">
                             <tr className=" flex gap-x-21 items-center border-b border-gray-800 w-257">
                                 <th className="pl-5">#</th>
                                 <th className="">Product Name</th>
