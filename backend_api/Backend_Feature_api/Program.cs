@@ -1,8 +1,17 @@
+using Backend_Feature_api.src.dbcontext;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 
 var app = builder.Build();
@@ -22,5 +31,7 @@ app.MapGet("/", async context =>
 
     await Task.CompletedTask;
 });
+
+app.MapControllers();
 
 app.Run();
