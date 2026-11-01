@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddControllers();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -31,5 +31,7 @@ app.MapGet("/", async context =>
 
     await Task.CompletedTask;
 });
+
+app.MapControllers();
 
 app.Run();
