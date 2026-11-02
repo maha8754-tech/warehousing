@@ -1,27 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend_Feature_api.DTO.Product_DTO
 {
     public class CreateProductDTO
     {
         public int ProductId { get; set; }
-
-        [Required]
-        [MaxLength(50)]
-        public string ProductCode { get; set; } = string.Empty;
-
-        [Required]
-        [MaxLength(150)]
-        public string Name { get; set; } = string.Empty;
-
-        public string? Description { get; set; }
-
-        [Required]
-        [MaxLength(30)]
-        public string Unit { get; set; } = string.Empty;
-
-        public int MinimumQuantity { get; set; }
-
-        public bool IsActive { get; set; } = true;
+        public string ProductName { get; set; } = string.Empty;
+        public string Code { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
+        public int Stock { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Price { get; set; }
+        public string Status { get; set; } = string.Empty;
     }
 }

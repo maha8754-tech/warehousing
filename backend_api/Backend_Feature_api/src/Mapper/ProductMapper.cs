@@ -9,12 +9,11 @@ namespace Backend_Feature_api.src.Mapper
         {
             return new Product
             {
-                Description = ProductDTO.Description,
-                IsActive = ProductDTO.IsActive,
-                MinimumQuantity = ProductDTO.MinimumQuantity,
-                Name = ProductDTO.Name,
-                ProductCode = ProductDTO.ProductCode,
-                Unit = ProductDTO.Unit
+                Code = ProductDTO.Code,
+                Stock = ProductDTO.Stock,
+                Status = ProductDTO.Status,
+                ProductName = ProductDTO.ProductName,
+                Price = ProductDTO.Price,
             };
         }
     }
