@@ -71,12 +71,12 @@ namespace Backend_Feature_api.src.Service
                 return null;
             }
 
-            old_product.Unit = productDTO.Unit;
-            old_product.ProductCode = productDTO.ProductCode;
-            old_product.Name = productDTO.Name;
-            old_product.MinimumQuantity = productDTO.MinimumQuantity;
-            old_product.IsActive = productDTO.IsActive;
-            old_product.Description = productDTO.Description;
+            old_product.Code = productDTO.Code;
+            old_product.Price= productDTO.Price;
+            old_product.ProductName = productDTO.ProductName;
+            old_product.Status = productDTO.Status;
+            old_product.Stock = productDTO.Stock;
+            old_product.Category = productDTO.Category;
 
             await _context.SaveChangesAsync();
 
