@@ -1,6 +1,7 @@
 ﻿using Backend_Feature_api.DTO.Product_DTO;
 using Backend_Feature_api.src.dbcontext;
 using Backend_Feature_api.src.DTO.Product_DTO;
+using Backend_Feature_api.src.@interface;
 using Backend_Feature_api.src.Mapper;
 using Microsoft.AspNetCore.Mvc;
 using warehouse.Models;
@@ -11,24 +12,24 @@ namespace Backend_Feature_api.src.Controllers
     [ApiController]
     public class Product_Controller : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        public Product_Controller(ApplicationDbContext context)
+        private readonly IProductRepository _productRepo;
+        public Product_Controller(IProductRepository productRepo)
         {
-            _context = context;
+            _productRepo = productRepo;
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var Products = _context.product.ToList();
+            var Products = await _productRepo.GetAllAsync();
 
             return Ok(Products);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute]int id)
+        public async Task<IActionResult> GetById([FromRoute]int id)
         {
-            var Product = _context.product.FirstOrDefault(i => i.ProductId == id);
+            var Product = await _productRepo.GetByIdAsync(id);
 
             if(Product == null)
             {
@@ -39,50 +40,36 @@ namespace Backend_Feature_api.src.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateProductDTO productDTO)
+        public async Task<IActionResult> Create([FromBody] CreateProductDTO productDTO)
         {
-            var product = productDTO.ToProduct();
+            await _productRepo.CreateAsync(productDTO);
 
-            _context.product.Add(product);
-            _context.SaveChanges();
-
-            return CreatedAtAction(nameof(GetById), new { id = product.ProductId }, product);
+            return CreatedAtAction(nameof(GetById), new { id = productDTO.ProductId }, productDTO);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] UpdateProductDTO updateDTO)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateProductDTO UpdateProductDTO)
         {
-            var old_product = _context.product.FirstOrDefault(i => i.ProductId == id);
+            var new_product = await _productRepo.UpdateAsync(id,UpdateProductDTO);
 
-            if (old_product == null)
+            if (new_product == null)
             {
                 return NotFound();
             }
 
-            old_product.Unit = updateDTO.Unit;
-            old_product.ProductCode = updateDTO.ProductCode;
-            old_product.Name = updateDTO.Name;
-            old_product.MinimumQuantity = updateDTO.MinimumQuantity;
-            old_product.IsActive = updateDTO.IsActive;
-            old_product.Description = updateDTO.Description;
-
-            _context.SaveChanges();
-
-            return Ok(old_product); // return to DTO
+            return Ok(new_product);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var product = _context.product.FirstOrDefault(i => i.ProductId == id);
+            var product = await _productRepo.DeleteAsync(id);
 
             if(product == null)
             {
                 return NotFound();
             }
 
-            _context.product.Remove(product);
-            _context.SaveChanges();
 
             return NoContent();
         }
