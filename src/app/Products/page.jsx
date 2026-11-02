@@ -56,7 +56,7 @@ export default function Products() {
           <div className="">
             <table className="grid m-auto w-257">
                         <thead className="grid h-8 rounded-t-2xl text-gray-500 sticky top-0 bg-blue-100 border-b-2 border-gray-300 z-1">
-                            <tr className=" flex gap-x-21 items-center border-b border-gray-800 w-257">
+                            <tr className=" flex gap-x-21 items-center border-b border-gray-800 w-257 ">
                                 <th className="pl-5">#</th>
                                 <th className="">Product Name</th>
                                 <th className="">Code</th>
@@ -78,7 +78,7 @@ export default function Products() {
                                 </td>
                                 <td>
                                     <div className="flex font-semibold items-center gap-x-1 bg-black/10 w-9 h-9 rounded-4xl">
-                                        <img src="/warehousing/user.svg" alt="prof" className="rounded-4xl w-9 h-10" />
+                                        <img src="/warehousing/user.jpg" alt="prof" className="rounded-4xl w-9 h-10" />
                                         <span className="text-md">laptopj4565jjk4</span>
                                     </div>
                                 </td>
