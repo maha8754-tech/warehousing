@@ -26,7 +26,7 @@ namespace Backend_Feature_api.src.Controllers
             return Ok(Products);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute]int id)
         {
             var Product = await _productRepo.GetByIdAsync(id);
@@ -47,7 +47,7 @@ namespace Backend_Feature_api.src.Controllers
             return CreatedAtAction(nameof(GetById), new { id = productDTO.ProductId }, productDTO);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateProductDTO UpdateProductDTO)
         {
             var new_product = await _productRepo.UpdateAsync(id,UpdateProductDTO);
@@ -60,7 +60,7 @@ namespace Backend_Feature_api.src.Controllers
             return Ok(new_product);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var product = await _productRepo.DeleteAsync(id);
