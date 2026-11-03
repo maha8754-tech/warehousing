@@ -14,6 +14,7 @@ namespace Backend_Feature_api.src.Mapper
                 Status = ProductDTO.Status,
                 ProductName = ProductDTO.ProductName,
                 Price = ProductDTO.Price,
+                Category = ProductDTO.Category
             };
         }
     }

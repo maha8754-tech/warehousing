@@ -24,6 +24,9 @@ namespace Backend_Feature_api.src.Service
             await _context.product.AddAsync(product);
             await _context.SaveChangesAsync();
 
+            product.Code = $"p-{product.ProductId + 99}";
+            await _context.SaveChangesAsync();
+
             return product;
 
         }
