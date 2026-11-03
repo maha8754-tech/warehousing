@@ -1,6 +1,7 @@
 ﻿using Backend_Feature_api.DTO.Product_DTO;
 using Backend_Feature_api.src.dbcontext;
 using Backend_Feature_api.src.DTO.Product_DTO;
+using Backend_Feature_api.src.Helpers;
 using Backend_Feature_api.src.@interface;
 using Backend_Feature_api.src.Mapper;
 using Microsoft.AspNetCore.Mvc;
@@ -19,12 +20,12 @@ namespace Backend_Feature_api.src.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] ProductQueryObject query)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.IsValid);
 
-            var Products = await _productRepo.GetAllAsync();
+            var Products = await _productRepo.GetAllAsync(query);
 
             return Ok(Products);
         }

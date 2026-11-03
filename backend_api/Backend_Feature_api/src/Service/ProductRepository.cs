@@ -1,6 +1,7 @@
 ﻿using Backend_Feature_api.DTO.Product_DTO;
 using Backend_Feature_api.src.dbcontext;
 using Backend_Feature_api.src.DTO.Product_DTO;
+using Backend_Feature_api.src.Helpers;
 using Backend_Feature_api.src.@interface;
 using Backend_Feature_api.src.Mapper;
 using Microsoft.EntityFrameworkCore;
@@ -47,14 +48,63 @@ namespace Backend_Feature_api.src.Service
             return await _context.product.AnyAsync(i => i.ProductId == id);
         }
 
-        public async Task<List<Product>> GetAllAsync()
+        public async Task<List<Product>> GetAllAsync(ProductQueryObject query)
         {
-            var Products = await _context.product.ToListAsync();
-            // later the join and query object will be added in here and the base method
-            // in the iproductrepo 
-            // and pagination
+            var Products = _context.product.AsQueryable();
 
-            return Products;
+            if (query.Stock.HasValue)
+            {
+                Products = Products.Where(p => p.Stock == query.Stock.Value);
+            }
+
+            if (query.Price.HasValue)
+            {
+                Products = Products.Where(p => p.Price == query.Price.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.ProductName))
+            {
+                Products = Products.Where(i => i.ProductName.Contains(query.ProductName));
+            }
+            if (!string.IsNullOrWhiteSpace(query.Status))
+            {
+                Products = Products.Where(i => i.Status.Contains(query.Status));
+            }
+            if (!string.IsNullOrWhiteSpace(query.ProductName))
+            {
+                Products = Products.Where(i => i.ProductName.Contains(query.ProductName));
+            }
+            if (!string.IsNullOrWhiteSpace(query.Price.ToString()))
+            {
+                Products = Products.Where(i => i.Price.ToString().Contains(query.Price.ToString()));
+            }
+            if (!string.IsNullOrWhiteSpace(query.Code))
+            {
+                Products = Products.Where(i => i.Code.Contains(query.Code));
+            }
+            if (!string.IsNullOrWhiteSpace(query.Category))
+            {
+                Products = Products.Where(i => i.Category.Contains(query.Category));
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                if (query.SortBy.Equals("Stock", StringComparison.OrdinalIgnoreCase))
+                {
+                    Products = query.isDecsending ? Products.OrderByDescending(s => s.Stock) : Products.OrderBy(s => s.Stock);
+                }
+
+                if (query.SortBy.Equals("Price", StringComparison.OrdinalIgnoreCase))
+                {
+                    Products = query.isDecsending ? Products.OrderByDescending(s => s.Price) : Products.OrderBy(s => s.Price);
+                }
+            }
+
+            var skipNumber = (query.PageNumber - 1) * query.PageSize; // pagination
+
+
+            return await Products.Skip(skipNumber).Take(query.PageSize).ToListAsync();
+
         }
 
         public async Task<Product?> GetByIdAsync(int id)
