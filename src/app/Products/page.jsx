@@ -128,7 +128,7 @@ const [openAction , setOpenAction] = useState(false);
                                         <img src="/warehousing/user.jpg" alt="pn#" className="rounded-4xl w-5.5 h-6.5" />
                                         Laptop Dell X11
                                 </td>
-                                <td className="text-black">SKU-100</td>
+                                <td className="text-black">SKU-101</td>
                                 <td className="text-black">Electronic</td>
                                 <td className="text-black">45</td>
                                 <td className="text-black">45,000,000 T</td>
@@ -169,7 +169,7 @@ const [openAction , setOpenAction] = useState(false);
                                         <img src="/warehousing/user.jpg" alt="pn#" className="rounded-4xl w-5.5 h-6.5" />
                                         Laptop Dell X11
                                 </td>
-                                <td className="text-black">SKU-100</td>
+                                <td className="text-black">SKU-102</td>
                                 <td className="text-black">Electronic</td>
                                 <td className="text-black">1000</td>
                                 <td className="text-black">45,000,000 T</td>
@@ -210,7 +210,7 @@ const [openAction , setOpenAction] = useState(false);
                                         <img src="/warehousing/user.jpg" alt="pn#" className="rounded-4xl w-5.5 h-6.5" />
                                         Laptop Dell X11
                                 </td>
-                                <td className="text-black">SKU-100</td>
+                                <td className="text-black">SKU-103</td>
                                 <td className="text-black">Electronic</td>
                                 <td className="text-black">45</td>
                                 <td className="text-black">45,000,000 T</td>
@@ -251,7 +251,7 @@ const [openAction , setOpenAction] = useState(false);
                                         <img src="/warehousing/user.jpg" alt="pn#" className="rounded-4xl w-5.5 h-6.5" />
                                         Laptop Dell X11
                                 </td>
-                                <td className="text-black">SKU-100</td>
+                                <td className="text-black">SKU-104</td>
                                 <td className="text-black">Electronic</td>
                                 <td className="text-black">45</td>
                                 <td className="text-black">45,000,000 T</td>
@@ -292,7 +292,7 @@ const [openAction , setOpenAction] = useState(false);
                                         <img src="/warehousing/user.jpg" alt="pn#" className="rounded-4xl w-5.5 h-6.5" />
                                         Laptop Dell X11
                                 </td>
-                                <td className="text-black">SKU-100</td>
+                                <td className="text-black">SKU-1050</td>
                                 <td className="text-black">Electronic</td>
                                 <td className="text-black">5</td>
                                 <td className="text-black">45,000,000 T</td>
@@ -325,8 +325,10 @@ const [openAction , setOpenAction] = useState(false);
           </div>
           {/* row 4 */}
           <div className="flex justify-between">
-            <span>fcghgjhjk</span>
-            <div></div>
+            <span className="text-black">fcghgjhjk</span>
+            <div>
+                <button type="button" className="bg-white"></button>
+            </div>
           </div>
         </div>
     )
