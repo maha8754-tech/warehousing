@@ -12,7 +12,7 @@ export default function Header({activePage}) {
             <div className="flex flex-row items-center gap-x-3">
                 {/* ======================== menu =============================== */}
                 <div className="flex ml-2 w-7 h-7 items-center justify-center bg-blue-100 rounded-lg cursor-pointer">
-                    <TextAlignStart size={15} className="w-10"/>
+                    <TextAlignStart size={15} className="w-10 text-black"/>
                 </div>
                 {/* ================ seperator ===================== */}
                 <div className="h-8 border-r border-gray-200 ml-1"></div>
@@ -20,7 +20,7 @@ export default function Header({activePage}) {
                 <div className="flex gap-x-1 ml-2">
                     <Box size={35} className="text-blue-500"/>
                     <div className="grid">
-                        <h3 className="text-[15px] font-bold">Stock Pro</h3>
+                        <h3 className="text-[15px] text-black font-bold">Stock Pro</h3>
                         <span className="text-[10px] text-gray-400">Inventory Management</span>
                     </div>
                 </div>
@@ -34,7 +34,7 @@ export default function Header({activePage}) {
                             <LayoutDashboard size={20} className="text-blue-500"/>
                         </div>
                         <div className="grid">
-                            <h3 className="text-[15px] text-blue-700 font-bold">Dashboard</h3>
+                            <h3 className="text-[15px] text-black font-bold">Dashboard</h3>
                             <span className="text-[10px] text-gray-400">Home / Dashboard</span>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ export default function Header({activePage}) {
                             <Boxes size={20} className="text-blue-500"/>
                         </div>
                         <div className="grid">
-                            <h3 className="text-[15px] font-bold">Stock</h3>
+                            <h3 className="text-[15px] text-black font-bold">Stock</h3>
                             <span className="text-[10px] text-gray-400">Home / Stock</span>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ export default function Header({activePage}) {
                             <ArrowLeftRight size={20} className="text-blue-500"/>
                         </div>
                         <div className="grid">
-                            <h3 className="text-[15px] font-bold">Movements</h3>
+                            <h3 className="text-[15px] text-black font-bold">Movements</h3>
                             <span className="text-[10px] text-gray-400">Home / Movements</span>
                         </div>
                     </div>
@@ -79,19 +79,19 @@ export default function Header({activePage}) {
             {/* ================ box-search ================= */}
             <div className="flex items-center">
                 <Search size={20} className="absolute ml-2 top-8 text-gray-400"/>
-                <input type="search" name="search" placeholder="Search Poducts...e.g" className="bg-[#F2F6FA] w-full h-10 pl-10 rounded-3xl border border-gray-200  outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"/>
+                <input type="search" name="search" placeholder="Search Poducts...e.g" className="placeholder:text-gray-400 bg-[#F2F6FA] w-full h-10 pl-10 rounded-3xl border border-gray-200  outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"/>
             </div>
             {/* ============= Notif & accountUser */}
             <div className="flex items-center gap-x-4">
                 {/* ================ seperator ===================== */}
                 <div className="h-8 border-r border-gray-200 ml-3"></div>
                 <div className="flex items-center justify-center w-8 h-8 cursor-pointer bg-[#E8F1FE] rounded-lg">
-                    <Bell size={17} className=""/>
+                    <Bell size={17} className="text-black"/>
                 </div>
                 <div onClick={() => setIsOpen(!isOpan)} className="flex items-center cursor-pointer bg-[#ebf1f5] rounded-3xl w-47 h-12 gap-x-3">
                     <img src="/warehousing/hatamTehrani.jpg" alt="profile" className="ml-2 w-10 h-10 rounded-4xl"/>
                     <div className="grid">
-                        <h3 className="text-[15px] font-bold">Mahdi rush</h3>
+                        <h3 className="text-[15px] text-black font-bold">Mahdi rush</h3>
                         <span className="text-sm text-gray-400">Administrator</span>
                     </div>
                     <ChevronDownCircle size={16} className="text-gray-600"/>
@@ -102,7 +102,7 @@ export default function Header({activePage}) {
                 <header className="flex items-center h-15 gap-x-3.5">
                     <img src="/warehousing/hatamTehrani.jpg" alt="profile" className="ml-2 w-10 h-10 rounded-4xl"/>
                     <div className="grid">
-                        <h3 className="text-[15px] font-bold mr-10">Mahdi rush</h3>
+                        <h3 className="text-[15px] text-black font-bold mr-10">Mahdi rush</h3>
                         <span className="text-sm text-gray-400">mah12@gmail.com</span>
                     </div>
                 </header>
@@ -110,19 +110,19 @@ export default function Header({activePage}) {
                 <div className="w-65 border-b border-gray-200 z-50"></div>
                 <main className="grid items-center h-40">
                         <ul className="grid gap-y-5 ml-3">
-                            <li onClick={() => setModalOpen(true)} className="flex items-center rounded-lg gap-x-4 h-10 hover:bg-blue-200 hover:text-blue-700 cursor-pointer">
-                                <User/>
+                            <li onClick={() => setModalOpen(true)} className="flex items-center rounded-lg gap-x-4 h-10 hover:bg-blue-200 hover:text-blue-700 cursor-pointer text-black">
+                                <User className="text-black"/>
                                 View Profile
                                 <Modal
                                     modalOpen={modalOpen}
                                 />
                             </li>
-                            <li className="flex items-center rounded-lg gap-x-4 h-10 hover:bg-blue-200 hover:text-blue-700 cursor-pointer">
-                                <Settings/>
+                            <li className="flex items-center rounded-lg gap-x-4 h-10 hover:bg-blue-200 hover:text-blue-700 cursor-pointer text-black">
+                                <Settings className="text-black"/>
                                 Accounnt Settings
                             </li>
-                            <li className="flex items-center rounded-lg gap-x-4 h-10 hover:bg-blue-200 hover:text-blue-700 cursor-pointer">
-                                <CircleQuestionMark/>
+                            <li className="flex items-center rounded-lg gap-x-4 h-10 hover:bg-blue-200 hover:text-blue-700 cursor-pointer text-black">
+                                <CircleQuestionMark className="text-black"/>
                                 Suppport & About Us
                             </li>
                         </ul>
@@ -131,8 +131,8 @@ export default function Header({activePage}) {
                 <div className="w-65 border-b border-gray-200"></div>
                 <footer className="flex items-center">
                     <ul className="grid place-items-center-safe ml-3 h-10 bg-red-600/35 w-60 rounded-lg text-white/60 hover:bg-red-500 hover:text-white cursor-pointer">
-                        <li className="flex gap-x-4">
-                            <LogOut/>
+                        <li className="flex text-white/60 gap-x-4">
+                            <LogOut className="text-white/60"/>
                             Log Out
                         </li>
                     </ul>
