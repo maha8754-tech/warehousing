@@ -119,7 +119,7 @@ const [openAction , setOpenAction] = useState(false);
                             <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                                 <td className="pl-5">
                                     <div className="">
-                                        <span className="text-black">1</span>
+                                        <span className="text-black">2</span>
                                         {/* <img src="" alt="prof" className="rounded-4xl" /> */}
                                     </div>
                                 </td>
@@ -160,7 +160,7 @@ const [openAction , setOpenAction] = useState(false);
                             <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                                 <td className="pl-5">
                                     <div className="">
-                                        <span className="text-black">1</span>
+                                        <span className="text-black">3</span>
                                         {/* <img src="" alt="prof" className="rounded-4xl" /> */}
                                     </div>
                                 </td>
@@ -201,7 +201,7 @@ const [openAction , setOpenAction] = useState(false);
                             <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                                 <td className="pl-5">
                                     <div className="">
-                                        <span className="text-black">1</span>
+                                        <span className="text-black">4</span>
                                         {/* <img src="" alt="prof" className="rounded-4xl" /> */}
                                     </div>
                                 </td>
@@ -242,7 +242,7 @@ const [openAction , setOpenAction] = useState(false);
                             <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                                 <td className="pl-5">
                                     <div className="">
-                                        <span className="text-black">1</span>
+                                        <span className="text-black">5</span>
                                         {/* <img src="" alt="prof" className="rounded-4xl" /> */}
                                     </div>
                                 </td>
@@ -283,7 +283,7 @@ const [openAction , setOpenAction] = useState(false);
                             <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] mt-1">
                                 <td className="pl-5">
                                     <div className="">
-                                        <span className="text-black">1</span>
+                                        <span className="text-black">6</span>
                                         {/* <img src="" alt="prof" className="rounded-4xl" /> */}
                                     </div>
                                 </td>
