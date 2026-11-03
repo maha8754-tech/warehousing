@@ -34,7 +34,7 @@ export default function Header({activePage}) {
                             <LayoutDashboard size={20} className="text-blue-500"/>
                         </div>
                         <div className="grid">
-                            <h3 className="text-[15px] font-bold">Dashboard</h3>
+                            <h3 className="text-[15px] text-blue-700 font-bold">Dashboard</h3>
                             <span className="text-[10px] text-gray-400">Home / Dashboard</span>
                         </div>
                     </div>
