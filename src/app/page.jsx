@@ -25,7 +25,7 @@ export default function Home() {
           activePage={activePage}
         />
       </header>
-      <main className="grid mt-2">
+      <main className="grid mt-2 w-265">
         {activePage === "Dashboard" && (
           <Dashboard/>
         )}

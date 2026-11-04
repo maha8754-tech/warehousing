@@ -31,8 +31,8 @@ export default function Products() {
         loadProducts();
     } , []);
     
-    if (loading) return <p>product get now...</p>
-    if (error) return <p>Error:{error}</p>
+    if (loading) return <p className="text-purple-500">product get now...</p>
+    if (error) return <p className="text-red-600">Error:{error}</p>
  
     const [openAction , setOpenAction] = useState(false);
 
@@ -105,10 +105,7 @@ export default function Products() {
                             
                             {/* Record #1 */}
                             <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-2">
-                                <td className="pl-5 text-black">
-                                        1
-                                        {/* <img src="" alt="prof" className="rounded-4xl" /> */}
-                                </td>
+                                <td className="pl-5 text-black">1</td>
                                 {/* flex font-semibold items-center gap-x-1 text-sm text-black bg-black/10 w-5.5 h-6.5 rounded-4xl" */}
                                 <td className="flex gap-x-1 text-black">
                                         <img src="/warehousing/user.jpg" alt="pn#" className="rounded-4xl w-5.5 h-6.5" />

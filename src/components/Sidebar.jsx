@@ -68,8 +68,8 @@ export default function Sidebar( {activePage , setActivePage}) {
             </LiquidGlass>
                 <footer className="flex -mt-10 z-10 ml-5">
                     {/* <Link href="/Login" className="w-full"> */}
-                        <div onClick={() => setPopupLog(!popupLog)} className="flex gap-5 w-full p-2 hover:bg-purple-400/45 rounded-3xl cursor-pointer">
-                            <DoorOpen/>
+                        <div onClick={() => setPopupLog(!popupLog)} className="flex text-black gap-5 w-full p-2 hover:bg-purple-400/45 rounded-3xl cursor-pointer">
+                            <DoorOpen className="text-black"/>
                             Logout
                         </div>
                     {popupLog && (
