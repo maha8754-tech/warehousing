@@ -1,11 +1,40 @@
 "use client"
 
-import { Edit, Info, LayoutDashboard, List, Plus, Search, Trash, View } from "lucide-react"
-import { useState } from "react"
+import { Edit, Info, LayoutDashboard, List, Plus, Search, Trash, UserRoundArrowLeft, View } from "lucide-react"
+import { useState , useEffect } from "react"
 
 export default function Products() {
+    const [products , setProducts] = useState([]) 
+    const [loading , setLoading] = useState(true) 
+    const [error , setError] = useState("")
+    
+    useEffect(() => {
+        async function loadProducts() {
+            try {
+                const baseUrl = process.env.API_URL;
 
-const [openAction , setOpenAction] = useState(false);
+                const response = await fetch(
+                    `${baseUrl}/api/Products`
+                );
+                if(!response.ok){
+                    throw new Error("Error Get Products")
+                }
+
+                const data = await response.json();
+                setProducts(data);
+            } catch (err) {
+                setError(err.message)
+            } finally{
+                setLoading(false)
+            }
+        }
+        loadProducts();
+    } , []);
+    
+    if (loading) return <p>product get now...</p>
+    if (error) return <p>Error:{error}</p>
+ 
+    const [openAction , setOpenAction] = useState(false);
 
     return(
         <div className="grid gap-y-5 bg-blue-200 w-265 max-h-screen rounded-2xl">
@@ -73,13 +102,12 @@ const [openAction , setOpenAction] = useState(false);
                         </thead>
 
                         <tbody className="grid gap-y-1 bg-white rounded-b-xl">
+                            
                             {/* Record #1 */}
                             <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-2">
-                                <td className="pl-5">
-                                    <div className="">
-                                        <span className="text-black">1</span>
+                                <td className="pl-5 text-black">
+                                        1
                                         {/* <img src="" alt="prof" className="rounded-4xl" /> */}
-                                    </div>
                                 </td>
                                 {/* flex font-semibold items-center gap-x-1 text-sm text-black bg-black/10 w-5.5 h-6.5 rounded-4xl" */}
                                 <td className="flex gap-x-1 text-black">
@@ -114,7 +142,6 @@ const [openAction , setOpenAction] = useState(false);
                                     )}
                                 </td>
                             </tr>
-
                             {/* Record #2 */}
                             <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                                 <td className="pl-5">
@@ -320,6 +347,7 @@ const [openAction , setOpenAction] = useState(false);
                                     )}
                                 </td>
                             </tr>
+                            
                         </tbody>
                         </table>
           </div>
