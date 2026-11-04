@@ -10,6 +10,14 @@ namespace Backend_Feature_api.src.dbcontext
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Product>().
+                HasIndex(p => p.Code)
+                .IsUnique();
+        }
         public DbSet<Product> product { get; set; }
     }
 }

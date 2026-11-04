@@ -35,7 +35,7 @@ namespace Backend_Feature_api.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -52,6 +52,9 @@ namespace Backend_Feature_api.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ProductId");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
 
                     b.ToTable("product");
                 });
