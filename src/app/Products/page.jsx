@@ -4,6 +4,7 @@ import { Edit, Info, LayoutDashboard, List, Plus, Search, Trash, UserRoundArrowL
 import { useState , useEffect } from "react"
 
 export default function Products() {
+    const [openAction , setOpenAction] = useState(false);
     const [products , setProducts] = useState([]) 
     const [loading , setLoading] = useState(true) 
     const [error , setError] = useState("")
@@ -11,7 +12,7 @@ export default function Products() {
     useEffect(() => {
         async function loadProducts() {
             try {
-                const baseUrl = process.env.API_URL;
+                const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
                 const response = await fetch(
                     `${baseUrl}/api/Products`
@@ -34,8 +35,7 @@ export default function Products() {
     if (loading) return <p className="text-purple-500">product get now...</p>
     if (error) return <p className="text-red-600">Error:{error}</p>
  
-    const [openAction , setOpenAction] = useState(false);
-
+    
     return(
         <div className="grid gap-y-5 bg-blue-200 w-265 max-h-screen rounded-2xl">
           {/* row 1 */}
