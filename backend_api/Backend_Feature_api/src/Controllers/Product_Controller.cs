@@ -9,7 +9,7 @@ using warehouse.Models;
 
 namespace Backend_Feature_api.src.Controllers
 {
-    [Route("api/Product")]
+    [Route("api/Products")]
     [ApiController]
     public class Product_Controller : ControllerBase
     {
