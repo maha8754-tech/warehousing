@@ -6,7 +6,7 @@ import { useState , useEffect } from "react"
 export default function Products() {
     const [openAction , setOpenAction] = useState(false);
     const [addProduct , setAddProduct] = useState(false);
-    const [form , setForm] = useState({productname:"", category:"", stock:"", price:"",})
+    const [form , setForm] = useState({productName:"", category:"", stock:"", price:"",})
     const [products , setProducts] = useState([]) 
     const [editId , setEditId] = useState(null)
     const [loading , setLoading] = useState(true) 
@@ -44,7 +44,7 @@ export default function Products() {
             })
             if(!response.ok){
                     alert("saved")
-                    setForm({productname:"", category:"", stock:"", price:""});
+                    setForm({productName:"", category:"", stock:"", price:""});
                     loadGetProducts()
                 }else{
                     alert("error")
@@ -60,7 +60,7 @@ export default function Products() {
             })
             if(!response.ok){
                     alert("edited")
-                    setForm({productname:"", category:"", stock:"", price:""});
+                    setForm({productName:"", category:"", stock:"", price:""});
                     setEditId(null)
                     loadGetProducts()
                 }else{
@@ -91,8 +91,8 @@ export default function Products() {
         else addsProduct()
     }
     const handleEdit = (u) =>{
-        setEditId(u.productid)
-        setForm({productname:u.productname, category:u.category, stock:u.stock, price:u.price});
+        setEditId(u.productId)
+        setForm({productName:u.productName, category:u.category, stock:u.stock, price:u.price});
     }
     
     if (loading) return <p className="text-purple-500">product get now...</p>
@@ -147,7 +147,7 @@ export default function Products() {
                                         required
                                         autoComplete="name"
                                         placeholder="LapTop Asus VivoBook"
-                                        value={form.productname}
+                                        value={form.productName}
                                         onChange={handleChange}
                                         className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                                     />
@@ -285,12 +285,12 @@ export default function Products() {
                         <tbody className="grid gap-y-1 bg-white rounded-b-xl">
                             {/* Record #1 */}
                             {products.map((u) => (
-                                <tr key={u.productid} className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-2">
-                                <td className="pl-5 text-black">{u.productid}</td>
+                                <tr key={u.productId} className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-2">
+                                <td className="pl-5 text-black">{u.productId}</td>
                                 {/* flex font-semibold items-center gap-x-1 text-sm text-black bg-black/10 w-5.5 h-6.5 rounded-4xl" */}
                                 <td className="flex gap-x-1 text-black">
                                         <img src="/warehousing/user.jpg" alt="pn#" className="rounded-4xl w-5.5 h-6.5" />
-                                        {u.productname}
+                                        {u.productName}
                                 </td>
                                 <td className="text-black">{u.code}</td>
                                 <td className="text-black">{u.category}</td>
