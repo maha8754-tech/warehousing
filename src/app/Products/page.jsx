@@ -68,7 +68,7 @@ export default function Products() {
                 }
             }
 
-    const deleteProduct = async (productid) => {
+    const deleteProduct = async (productId) => {
         const response = await fetch(
             `${baseUrl}/api/Products`, {
                 method:"DELETE",
@@ -86,7 +86,7 @@ export default function Products() {
         setForm({...form , [e.target.name]: e.target.value})
     }
     const handleSubmit = async (e) => {
-        e.prevenyDefaulte()
+        e.preventDefault()
         if (editId)  updateProduct()
         else addsProduct()
     }
@@ -95,8 +95,8 @@ export default function Products() {
         setForm({productName:u.productName, category:u.category, stock:u.stock, price:u.price});
     }
     
-    // if (loading) return <p className="text-purple-500">product get now...</p>
-    // if (error) return <p className="text-red-600">Error:{error}</p>
+    if (loading) return <p className="text-purple-500">product get now...</p>
+    if (error) return <p className="text-red-600">Error:{error}</p>
  
     
     return(
@@ -134,7 +134,7 @@ export default function Products() {
                     </header>
 
                     <main className="grid w-full">
-                        <form action="" method="post" onSubmit={handleSubmit} className="flex justify-center items-center">
+                        <form action="" method="post" onSubmit={handleSubmit} className="grid grid-rows-2 gap-y-5">
                             <div className="grid grid-cols-2 gap-6 w-full">
                                 <div className="flex flex-col gap-2">
                                     <div className="flex">
@@ -214,25 +214,22 @@ export default function Products() {
                                     />
                                 </div>
                             </div>
+                            <div className="flex gap-5 justify-center">
+                                <button 
+                                    type="submit"
+                                    disabled={loading} 
+                                    className="flex gap-4 items-center h-11 bg-blue-500 text-sm text-white cursor-pointer px-3 rounded-xl hover:text-blue-500 hover:bg-white focus:bg-white focus:text-blue-500">
+                                    <Verified size={22}/>
+                                    {loading ? 'server sed now...' : 'Verify product'}
+                                </button>
+                                <button onClick={() => setAddProduct(!addProduct)} className="flex gap-4 items-center w-35 h-11 text-sm text-gray-500 cursor-pointer px-3 rounded-xl hover:text-white hover:bg-red-500 focus:bg-white focus:text-blue-500 border-2 border-gray-500" type="button">
+                                    <XCircle size={22}/>
+                                    Cancle
+                                </button>
+                            </div>
                         </form>
                     </main>
-                    <footer className="flex justify-center items-center">
-                        <div className="flex gap-3.5">
-                            <button 
-                                type="submit"
-                                disabled={loading} 
-                                className="flex gap-4 items-center h-11 bg-blue-500 text-sm text-white cursor-pointer px-3 rounded-xl hover:text-blue-500 hover:bg-white focus:bg-white focus:text-blue-500">
-                                <Verified size={22}/>
-                                {loading ? 'server sed now...' : 'Verify product'}
-                            </button>
-
-                            <button onClick={() => setAddProduct(!addProduct)} className="flex gap-4 items-center w-35 h-11 text-sm text-gray-500 cursor-pointer px-3 rounded-xl hover:text-white hover:bg-red-500 focus:bg-white focus:text-blue-500 border-2 border-gray-500" type="button">
-                                <XCircle size={22}/>
-                                Cancle
-                            </button>
-                            
-                        </div>
-                    </footer>
+                    {/* <footer className="flex justify-center items-center"></footer> */}
                 </div>
             </div>
           )}
