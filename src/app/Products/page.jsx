@@ -95,8 +95,8 @@ export default function Products() {
         setForm({productName:u.productName, category:u.category, stock:u.stock, price:u.price});
     }
     
-    if (loading) return <p className="text-purple-500">product get now...</p>
-    if (error) return <p className="text-red-600">Error:{error}</p>
+    // if (loading) return <p className="text-purple-500">product get now...</p>
+    // if (error) return <p className="text-red-600">Error:{error}</p>
  
     
     return(
@@ -139,11 +139,11 @@ export default function Products() {
                                 <div className="flex flex-col gap-2">
                                     <div className="flex">
                                         <Tag size={17} className="text-blue-500"/>
-                                        <label htmlFor="Name" className="text-sm text-black">ProductName</label>
+                                        <label htmlFor="name" className="text-sm text-black">ProductName</label>
                                     </div>
                                     <input 
                                         type="text" 
-                                        name="productname"
+                                        name="productName"
                                         required
                                         autoComplete="name"
                                         placeholder="LapTop Asus VivoBook"
