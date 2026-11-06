@@ -31,7 +31,7 @@ export default function Products() {
         }
     }
     useEffect(() => {
-        
+        //eslint-disble-next-line react-hooks/set-state-in-effect
         loadGetProducts();
     } , []);
 
