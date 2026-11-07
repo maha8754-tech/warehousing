@@ -62,8 +62,7 @@ export default function Products() {
             })
             if(response.ok){
                     alert("edited")
-                    setForm({productName:"", category:"", stock:"", price:""});
-                    setEditId(null)
+                    closeModal()
                     loadGetProducts()
                 }else{
                     alert("error")
@@ -87,15 +86,26 @@ export default function Products() {
     const handleChange = (e) => {
         setForm({...form , [e.target.name]: e.target.value})
     }
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         if (editId)  updateProduct()
         else addsProduct()
     }
     const handleEdit = (u) =>{
-        setEditPopup(false)
         setEditId(u.productId)
         setForm({productName:u.productName, category:u.category, stock:u.stock, price:u.price});
+        setEditPopup(true)
+    }
+
+    const closeModal = () => {
+        setEditPopup(false)
+        setEditId(null)
+        setForm({productName:"", category:"", stock:"", price:""});
+    }
+
+    const handleEditSubmit = (e) => {
+        e.preventDefault()
+        updateProduct()
     }
     
     // if (loading) return <p className="text-purple-500">product get now...</p>
@@ -305,14 +315,14 @@ export default function Products() {
                                         <List />
                                     </button>
                                     {!openAction && (
-                                        <div className="grid rounded-2xl bg-black/50 w-25 h-22 py-2 absolute right-2">
+                                        <div className="  grid rounded-2xl bg-black/50 w-25 h-22 py-2 absolute right-2" >
                                             <option onClick={() => setEditPopup(true)} value="" className="flex gap-x-1.5 text-black justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
                                                 <Edit className="text-black" size={20}/>
                                                 Edit
                                             </option>
                                             {editPopup && (
-                                                <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/50">
-                                                    <div className="grid grid-rows-[16%_68%_15%] bg-white/95 w-150 h-100 rounded-2xl">
+                                                <div className=" fixed inset-0 z-100 flex items-center justify-center bg-black/50" onClick={closeModal}>
+                                                    <div className=" grid grid-rows-[16%_68%_15%] bg-white/95 w-150 h-100 rounded-2xl" onClick={(e) => e.stopPropagation()}>
                                                         <header className="bg-blue-100 h-15.5 rounded-t-2xl">
                                                             <div className="flex gap-x-2.5 mt-3">
                                                                 <div className="flex w-10 h-10 bg-blue-500 p-2.5 ml-3 rounded-lg">
@@ -326,7 +336,7 @@ export default function Products() {
                                                         </header>
 
                                                         <main className="grid w-full">
-                                                            <form action="" method="post" onSubmit={handleSubmit} className="grid grid-rows-2 gap-y-5">
+                                                            <form action="" method="post" onSubmit={handleEditSubmit} className="grid grid-rows-2 gap-y-5">
                                                                 <div className="grid grid-cols-2 gap-6 w-full">
                                                                     <div className="flex flex-col gap-2">
                                                                         <div className="flex">
@@ -412,9 +422,9 @@ export default function Products() {
                                                                         disabled={loading} 
                                                                         className="flex gap-4 items-center h-11 bg-blue-500 text-sm text-white cursor-pointer px-3 rounded-xl hover:text-blue-500 hover:bg-white focus:bg-white focus:text-blue-500">
                                                                         <Edit3 size={22}/>
-                                                                        {loading ? 'server sed now...' : 'Verify product'}
+                                                                        {loading ? 'server sed now...' : 'Edit'}
                                                                     </button>
-                                                                    <button onClick={() => handleEdit(u)} className="flex gap-4 items-center w-35 h-11 text-sm text-gray-500 cursor-pointer px-3 rounded-xl hover:text-white hover:bg-red-500 focus:bg-white focus:text-blue-500 border-2 border-gray-500" type="button">
+                                                                    <button type="button" onClick={closeModal} className="flex gap-4 items-center w-35 h-11 text-sm text-gray-500 cursor-pointer px-3 rounded-xl hover:text-white hover:bg-red-500 focus:bg-white focus:text-blue-500 border-2 border-gray-500" type="button">
                                                                         <XCircle size={22}/>
                                                                         Cancle
                                                                     </button>
