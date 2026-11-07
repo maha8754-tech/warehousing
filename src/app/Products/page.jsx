@@ -1,7 +1,8 @@
 "use client"
 
-import { Bell, ClosedCaption, Coins, DollarSign, Edit, Info, LayoutDashboard, LayoutGrid, List, Package, Package2, PackagePlus, Plus, Ratio, Search, Tag, Trash, UserRoundArrowLeft, Verified, View, X, XCircle, XLineTop, XOctagon } from "lucide-react"
+import { Bell, ClosedCaption, Coins, DollarSign, Edit, Edit3, Info, LayoutDashboard, LayoutGrid, List, Package, Package2, PackagePlus, Plus, Ratio, Search, Tag, Trash, UserRoundArrowLeft, Verified, View, X, XCircle, XLineTop, XOctagon } from "lucide-react"
 import { useState , useEffect } from "react"
+
 
 export default function Products() {
     const [openAction , setOpenAction] = useState(false);
@@ -9,6 +10,7 @@ export default function Products() {
     const [form , setForm] = useState({productName:"", category:"", stock:"", price:"",})
     const [products , setProducts] = useState([]) 
     const [editId , setEditId] = useState(null)
+    const [editPopup , setEditPopup] = useState(false)
     const [loading , setLoading] = useState(true) 
     const [error , setError] = useState("")
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -42,7 +44,7 @@ export default function Products() {
                 headers:{"content-Type": "application/json"},
                 body: JSON.stringify(form)
             })
-            if(!response.ok){
+            if(response.ok){
                     alert("saved")
                     setForm({productName:"", category:"", stock:"", price:""});
                     loadGetProducts()
@@ -53,12 +55,12 @@ export default function Products() {
         
     const updateProduct = async () => {
         const response = await fetch(
-            `${baseUrl}/api/Products`, {
+            `${baseUrl}/api/Products${editId}`, {
                 method:"PUT",
                 headers:{"content-Type": "application/json"},
                 body: JSON.stringify(form)
             })
-            if(!response.ok){
+            if(response.ok){
                     alert("edited")
                     setForm({productName:"", category:"", stock:"", price:""});
                     setEditId(null)
@@ -69,13 +71,13 @@ export default function Products() {
             }
 
     const deleteProduct = async (productId) => {
+        if (!confirm(`delete O.K ?\n\nID: ${productId.productId}\nName: ${productId.productName}`)) return;
         const response = await fetch(
-            `${baseUrl}/api/Products`, {
+            `${baseUrl}/api/Products/${productId}`, {
                 method:"DELETE",
             })
-            if(!response.ok){
+            if(response.ok){
                     alert("deleted")
-                    setEditId(null)
                     loadGetProducts()
                 }else{
                     alert("error")
@@ -91,12 +93,13 @@ export default function Products() {
         else addsProduct()
     }
     const handleEdit = (u) =>{
+        setEditPopup(false)
         setEditId(u.productId)
         setForm({productName:u.productName, category:u.category, stock:u.stock, price:u.price});
     }
     
-    if (loading) return <p className="text-purple-500">product get now...</p>
-    if (error) return <p className="text-red-600">Error:{error}</p>
+    // if (loading) return <p className="text-purple-500">product get now...</p>
+    // if (error) return <p className="text-red-600">Error:{error}</p>
  
     
     return(
@@ -229,7 +232,6 @@ export default function Products() {
                             </div>
                         </form>
                     </main>
-                    {/* <footer className="flex justify-center items-center"></footer> */}
                 </div>
             </div>
           )}
@@ -304,12 +306,126 @@ export default function Products() {
                                     </button>
                                     {!openAction && (
                                         <div className="grid rounded-2xl bg-black/50 w-25 h-22 py-2 absolute right-2">
-                                            <option onClick={() => handleEdit(u)} value="" className="flex gap-x-1.5 text-black justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
+                                            <option onClick={() => setEditPopup(true)} value="" className="flex gap-x-1.5 text-black justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
                                                 <Edit className="text-black" size={20}/>
                                                 Edit
                                             </option>
+                                            {editPopup && (
+                                                <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/50">
+                                                    <div className="grid grid-rows-[16%_68%_15%] bg-white/95 w-150 h-100 rounded-2xl">
+                                                        <header className="bg-blue-100 h-15.5 rounded-t-2xl">
+                                                            <div className="flex gap-x-2.5 mt-3">
+                                                                <div className="flex w-10 h-10 bg-blue-500 p-2.5 ml-3 rounded-lg">
+                                                                    <Package className="text-white"/>
+                                                                </div>
+                                                                <div>
+                                                                    <h2 className="text-black font-bold text-md">Add New Product</h2>
+                                                                    <span className="text-gray-500 text-[12px]">Enter the new product information.</span>
+                                                                </div>
+                                                            </div>
+                                                        </header>
 
-                                            <option value="" onClick={() => deleteProduct(u.productid)} className="flex gap-x-1.5 text-red-500 justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
+                                                        <main className="grid w-full">
+                                                            <form action="" method="post" onSubmit={handleSubmit} className="grid grid-rows-2 gap-y-5">
+                                                                <div className="grid grid-cols-2 gap-6 w-full">
+                                                                    <div className="flex flex-col gap-2">
+                                                                        <div className="flex">
+                                                                            <Tag size={17} className="text-blue-500"/>
+                                                                            <label htmlFor="name" className="text-sm text-black">ProductName</label>
+                                                                        </div>
+                                                                        <input 
+                                                                            type="text" 
+                                                                            name="productName"
+                                                                            required
+                                                                            autoComplete="name"
+                                                                            placeholder="LapTop Asus VivoBook"
+                                                                            value={form.productName}
+                                                                            onChange={handleChange}
+                                                                            className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
+                                                                        />
+                                                                    </div>
+
+                                                                    <div className="flex flex-col gap-2">
+                                                                        <div className="flex">
+                                                                            <LayoutGrid size={17} className="text-blue-500"/>
+                                                                            <label htmlFor="category" className="text-sm text-black">Category</label>
+                                                                        </div>
+                                                                        <select 
+                                                                            name="category"
+                                                                            value={form.category}
+                                                                            onChange={handleChange}
+                                                                            required
+                                                                            /*</div>value={form.category} onChange={handelChange} required */
+                                                                            className="cursor-pointer bg-black/50 w-full h-12 rounded-2xl text-white outline-none border border-white/10 focus:border-white/40"
+                                                                        >
+                                                                            <option value="Category Choice..." hidden className="">Category Choice...</option>
+                                                                            <option value="Electronics">Electronics</option>
+                                                                            <option value="Accessories">Accessories</option>
+                                                                            <option value="Office Supplies">Office Supplies</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div className="flex flex-col gap-2">
+                                                                        <div className="flex">
+                                                                            <Bell size={17} className="text-blue-500"/>
+                                                                            <label htmlFor="stock" className="text-sm text-black">Stock</label>
+                                                                        </div>
+                                                                        <input 
+                                                                            type="number"
+                                                                            name="stock"
+                                                                            required
+                                                                            placeholder="0"
+                                                                            value={form.stock}
+                                                                            onChange={handleChange}
+                                                                            className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
+                                                                        />
+                                                                    </div>
+
+                                                                    <div className="flex flex-col gap-2">
+                                                                        <div className="flex">
+                                                                            <DollarSign size={17} className="text-blue-500"/>
+                                                                            <label htmlFor="price" className="text-sm text-black">Price</label>
+                                                                        </div>
+                                                                        <input 
+                                                                            type="number"
+                                                                            name="price"
+                                                                            required
+                                                                            autoComplete="price"
+                                                                            placeholder="2,000,000"
+                                                                            value={form.price}
+                                                                            onChange={handleChange}
+                                                                            className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
+                                                                        />
+                                                                    </div>
+
+                                                                    <div className="flex flex-col gap-2">
+                                                                        <input 
+                                                                            type="reset"
+                                                                            // value={formData.productname}
+                                                                            className="cursor-pointer bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                                <div className="flex gap-5 justify-center">
+                                                                    <button 
+                                                                        type="submit"
+                                                                        disabled={loading} 
+                                                                        className="flex gap-4 items-center h-11 bg-blue-500 text-sm text-white cursor-pointer px-3 rounded-xl hover:text-blue-500 hover:bg-white focus:bg-white focus:text-blue-500">
+                                                                        <Edit3 size={22}/>
+                                                                        {loading ? 'server sed now...' : 'Verify product'}
+                                                                    </button>
+                                                                    <button onClick={() => handleEdit(u)} className="flex gap-4 items-center w-35 h-11 text-sm text-gray-500 cursor-pointer px-3 rounded-xl hover:text-white hover:bg-red-500 focus:bg-white focus:text-blue-500 border-2 border-gray-500" type="button">
+                                                                        <XCircle size={22}/>
+                                                                        Cancle
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </main>
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            <option value="" onClick={() => deleteProduct(u.productId)} className="flex gap-x-1.5 text-red-500 justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
                                                 <Trash className="text-red-500" size={20}/>
                                                 Delete
                                             </option>
