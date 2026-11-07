@@ -98,9 +98,9 @@ export default function Products() {
     }
 
     const closeModal = () => {
-        setEditPopup(false)
         setEditId(null)
         setForm({productName:"", category:"", stock:"", price:""});
+        setEditPopup(false)
     }
 
     const handleEditSubmit = (e) => {
@@ -424,7 +424,7 @@ export default function Products() {
                                                                         <Edit3 size={22}/>
                                                                         {loading ? 'server sed now...' : 'Edit'}
                                                                     </button>
-                                                                    <button type="button" onClick={closeModal} className="flex gap-4 items-center w-35 h-11 text-sm text-gray-500 cursor-pointer px-3 rounded-xl hover:text-white hover:bg-red-500 focus:bg-white focus:text-blue-500 border-2 border-gray-500" type="button">
+                                                                    <button type="button" onClick={closeModal} className="flex gap-4 items-center w-35 h-11 text-sm text-gray-500 cursor-pointer px-3 rounded-xl hover:text-white hover:bg-red-500 focus:bg-white focus:text-blue-500 border-2 border-gray-500">
                                                                         <XCircle size={22}/>
                                                                         Cancle
                                                                     </button>
