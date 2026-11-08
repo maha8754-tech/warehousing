@@ -69,8 +69,8 @@ export default function Products() {
                 }
             }
 
-    const deleteProduct = async (productId) => {
-        if (!confirm(`delete O.K ?\n\nID: ${productId}\nName: ${productId}`)) return;
+    const deleteProduct = async (productId , productName) => {
+        if (!confirm(`delete O.K ?\n\nID: ${productId}\nName: ${productName}`)) return;
         const response = await fetch(
             `${baseUrl}/api/Products/${productId}`, {
                 method:"DELETE",
