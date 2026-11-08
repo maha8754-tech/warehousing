@@ -5,7 +5,7 @@ import { useState , useEffect } from "react"
 
 
 export default function Products() {
-    const [openAction , setOpenAction] = useState(false);
+    const [openAction , setOpenAction] = useState(null);
     const [addProduct , setAddProduct] = useState(false);
     const [form , setForm] = useState({productName:"", category:"", stock:"", price:"",})
     const [products , setProducts] = useState([]) 
@@ -70,7 +70,7 @@ export default function Products() {
             }
 
     const deleteProduct = async (productId) => {
-        if (!confirm(`delete O.K ?\n\nID: ${productId.productId}\nName: ${productId.productName}`)) return;
+        if (!confirm(`delete O.K ?\n\nID: ${productId}\nName: ${productId}`)) return;
         const response = await fetch(
             `${baseUrl}/api/Products/${productId}`, {
                 method:"DELETE",
@@ -310,16 +310,21 @@ export default function Products() {
                                         <span className="text-green-700 font-bold text-sm">{u.status}</span>
                                     </div>
                                 </td>
-                                <td className="">
-                                    <button onClick={() => setOpenAction(!openAction)} type="button" className=" p-0.5 cursor-pointer">
+                                <td className="relative">
+                                    <button onClick={() => setOpenAction(openAction === u.productId ? null : u.productId)} type="button" className=" p-0.5 cursor-pointer">
                                         <List />
                                     </button>
-                                    {!openAction && (
+                                    {openAction === u.productId && (
                                         <div className="  grid rounded-2xl bg-black/50 w-25 h-22 py-2 absolute right-2" >
-                                            <option onClick={() => setEditPopup(true)} value="" className="flex gap-x-1.5 text-black justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
-                                                <Edit className="text-black" size={20}/>
-                                                Edit
-                                            </option>
+                                            <button 
+                                                onClick={() => {
+                                                    handleEdit(u)
+                                                    setOpenAction
+                                                }} 
+                                                    className="flex gap-x-1.5 text-black justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
+                                                    <Edit className="text-black" size={20}/>
+                                                    Edit
+                                            </button>
                                             {editPopup && (
                                                 <div className=" fixed inset-0 z-100 flex items-center justify-center bg-black/50" onClick={closeModal}>
                                                     <div className=" grid grid-rows-[16%_68%_15%] bg-white/95 w-150 h-100 rounded-2xl" onClick={(e) => e.stopPropagation()}>
@@ -446,6 +451,47 @@ export default function Products() {
                             ))}
                             
                              {/* Record #2 */}
+                            <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
+                                <td className="pl-5">
+                                    <div className="">
+                                        <span className="text-black">2</span>
+                                        
+                                    </div>
+                                </td>
+                                <td className="flex gap-x-1 text-black">
+                                        <img src="/warehousing/user.jpg" alt="pn#" className="rounded-4xl w-5.5 h-6.5" />
+                                        Laptop Dell X11
+                                </td>
+                                <td className="text-black">SKU-101</td>
+                                <td className="text-black">Electronic</td>
+                                <td className="text-black">45</td>
+                                <td className="text-black">45,000,000 T</td>
+                                <td className="">
+                                    <div className="flex bg-green-200/60 rounded-2xl py-1 px-2 w-32 justify-center">
+                                        <span className="text-green-700 font-bold text-sm">Average Stock</span>
+                                    </div>
+                                </td>
+                                <td className="">
+                                    <button onClick={() => setOpenAction(!openAction)} type="button" className=" p-0.5 cursor-pointer">
+                                        <List />
+                                    </button>
+                                    {openAction && (
+                                        <div className="grid rounded-2xl bg-black/50 w-25 h-22 py-2 absolute right-2">
+                                            <option value="" className="flex gap-x-1.5 text-black justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
+                                                <Edit className="text-black" size={20}/>
+                                                Edit
+                                            </option>
+
+                                            <option value="" className="flex gap-x-1.5 text-red-500 justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
+                                                <Trash className="text-red-500" size={20}/>
+                                                Delete
+                                            </option>
+                                        </div>
+                                    )}
+                                </td>
+                            </tr>
+
+                            {/* Record #3 */}
                             <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                                 <td className="pl-5">
                                     <div className="">
