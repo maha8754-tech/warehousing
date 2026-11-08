@@ -70,8 +70,7 @@ export default function Products() {
             }
 
     const deleteProduct = async (productId) => {
-        const product = products.find((p) => p.id === productId)
-        if (!confirm(`delete O.K ?\n\nID: ${productId}\nName: ${product?.productName}`)) return;
+        if (!confirm(`delete O.K ?\n\nID: ${productId}\nName: ${productName}`)) return;
         const response = await fetch(
             `${baseUrl}/api/Products/${productId}`, {
                 method:"DELETE",
@@ -440,9 +439,8 @@ export default function Products() {
                                                     </div>
                                                 </div>
                                             )}
-                                            {/* onClick={() => deleteProduct(u.productId)}  */}
-                                            
-                                            <option value="" onClick={() => deleteProduct(p.id)} className="flex gap-x-1.5 text-red-500 justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
+
+                                            <option value="" onClick={() => deleteProduct(u.productId)} className="flex gap-x-1.5 text-red-500 justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
                                                 <Trash className="text-red-500" size={20}/>
                                                 Delete
                                             </option>
