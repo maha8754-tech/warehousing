@@ -69,10 +69,11 @@ export default function Products() {
                 }
             }
 
-    const deleteProduct = async (product) => {
-        if (!confirm(`delete O.K ?\n\nID: ${product.productId}\nName: ${product.productName}`)) return;
+    const deleteProduct = async (productId) => {
+        const product = products.find((p) => p.id === productId)
+        if (!confirm(`delete O.K ?\n\nID: ${productId}\nName: ${product?.productName}`)) return;
         const response = await fetch(
-            `${baseUrl}/api/Products/${product.productId}`, {
+            `${baseUrl}/api/Products/${productId}`, {
                 method:"DELETE",
             })
             if(response.ok){
@@ -439,8 +440,9 @@ export default function Products() {
                                                     </div>
                                                 </div>
                                             )}
-
-                                            <option value="" onClick={() => deleteProduct(u.productId)} className="flex gap-x-1.5 text-red-500 justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
+                                            {/* onClick={() => deleteProduct(u.productId)}  */}
+                                            
+                                            <option value="" onClick={() => deleteProduct(p.id)} className="flex gap-x-1.5 text-red-500 justify-center hover:bg-white hover:rounded-2xl cursor-pointer">
                                                 <Trash className="text-red-500" size={20}/>
                                                 Delete
                                             </option>
