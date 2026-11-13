@@ -156,13 +156,6 @@ export default function Movements() {
                     <option className="text-black" value="">West Warehouse</option>
                 </select>
             </div>
-            {/* view */}
-            {/* <div className="flex gap-x-5 justify-center items-center">
-                <LayoutDashboard size={30} className="bg-gray-200 p-1 rounded-lg cursor-pointer text-black" />
-                <LayoutDashboard size={30} className="bg-gray-200 p-1 rounded-lg cursor-pointer text-black" />
-                <LayoutDashboard size={30} className="bg-gray-200 p-1 rounded-lg cursor-pointer text-black" />
-                
-            </div> */}
           </div>
           {/* row 3 */}
           <div className="">
