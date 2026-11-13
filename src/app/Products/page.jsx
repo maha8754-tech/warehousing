@@ -55,7 +55,7 @@ export default function Products() {
         
     const updateProduct = async () => {
         const response = await fetch(
-            `${baseUrl}/api/Products${editId}`, {
+            `${baseUrl}/api/Products/${editId}`, {
                 method:"PUT",
                 headers:{"content-Type": "application/json"},
                 body: JSON.stringify(form)
@@ -69,8 +69,8 @@ export default function Products() {
                 }
             }
 
-    const deleteProduct = async (productId) => {
-        if (!confirm(`delete O.K ?\n\nID: ${productId}\nName: ${productId.productName}`)) return;
+    const deleteProduct = async (productId , productName) => {
+        if (!confirm(`delete O.K ?\n\nID: ${productId}\nName: ${form.productName}`)) return;
         const response = await fetch(
             `${baseUrl}/api/Products/${productId}`, {
                 method:"DELETE",
@@ -255,13 +255,13 @@ export default function Products() {
             {/* filter */}
             <div className="grid grid-cols-2 place-content-center ml-4 place-items-center">
                 {/* category */}
-                <select name="" className="border-2 border-gray-200 rounded-lg py-1.5 px-3 w-40">
+                <select className="text-black border-2 border-gray-200 rounded-lg py-1.5 px-3 w-40 cursor-pointer">
                     <option className="text-black" value="">all categories</option>
                     <option className="text-black" value="">electronics</option>
                     <option className="text-black" value="">accessories</option>
                 </select>
                 {/* status */}
-                <select name="" className="border-2 border-gray-200 rounded-lg py-1.5 px-3 w-40">
+                <select name="" className="text-black border-2 border-gray-200 rounded-lg py-1.5 px-3 w-40 cursor-pointer">
                     <option className="text-black" value="">all status</option>
                     <option className="text-black" value="">in stock</option>
                     <option className="text-black" value="">low stock</option>
@@ -492,7 +492,7 @@ export default function Products() {
                             </tr>
 
                             {/* Record #3 */}
-                            <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
+                            {/* <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                                 <td className="pl-5">
                                     <div className="">
                                         <span className="text-black">2</span>
@@ -530,13 +530,13 @@ export default function Products() {
                                         </div>
                                     )}
                                 </td>
-                            </tr>
+                            </tr> */}
                         </tbody>
                         </table>
           </div>
           {/* row 4 */}
           <div className="flex justify-between">
-            <span className="text-black">fcghgjhjk</span>
+            <span className="text-black">showing</span>
             <div>
                 <button type="button" className="bg-white"></button>
             </div>
