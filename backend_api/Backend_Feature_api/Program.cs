@@ -56,6 +56,10 @@ app.UseHttpsRedirection();
 
 app.UseCors(FrontPolicy);
 
+app.UseRateLimiter();
+
+app.MapControllers();
+
 // app.useauthoresasion();
 
 
@@ -66,6 +70,6 @@ app.MapGet("/", async context =>
     await Task.CompletedTask;
 });
 
-app.MapControllers();
+
 
 app.Run();

@@ -1,10 +1,12 @@
 ﻿using Backend_Feature_api.src.@interface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace Backend_Feature_api.src.Controllers
 {
     [Route("api/Movement")]
     [ApiController]
+    [EnableRateLimiting("fixed")]
     public class Movement_Controller : ControllerBase
     {
         private readonly IMovementRepository _movementRepo;

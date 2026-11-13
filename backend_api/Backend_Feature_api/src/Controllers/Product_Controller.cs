@@ -5,12 +5,14 @@ using Backend_Feature_api.src.Helpers;
 using Backend_Feature_api.src.@interface;
 using Backend_Feature_api.src.Mapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using warehouse.Models;
 
 namespace Backend_Feature_api.src.Controllers
 {
     [Route("api/Products")]
     [ApiController]
+    [EnableRateLimiting("fixed")]
     public class Product_Controller : ControllerBase
     {
         private readonly IProductRepository _productRepo;
