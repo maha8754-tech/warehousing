@@ -32,18 +32,19 @@ namespace Backend_Feature_api.src.Service
             await _context.SaveChangesAsync();
 
             #region movement_stash
-            /*var movement = new CreateMovementDTO
+            var movement = new CreateMovementDTO
             {
                 ProductName = product.ProductName,
                 Datetime = DateTime.Now,
-            };*/
+                Quantity = 10,
+                Type = "will change type",
+                warehouse = "will change warehouse"
+            };
 
-            /* await _movementRepo.CreateAsync(movement);
-             await _context.SaveChangesAsync();*/
+            await _movementRepo.CreateAsync(movement);
             #endregion
 
             return product;
-
         }
 
         public async Task<Product> DeleteAsync(int id)
