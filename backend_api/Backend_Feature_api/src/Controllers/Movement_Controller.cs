@@ -15,7 +15,7 @@ namespace Backend_Feature_api.src.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var movements = _movementRepo.GetAsync();
+            var movements = await _movementRepo.GetAsync();
 
             return Ok(movements);
         }
