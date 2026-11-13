@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Backend_Feature_api.src.Model;
+using Microsoft.EntityFrameworkCore;
 using warehouse.Models;
 
 namespace Backend_Feature_api.src.dbcontext
@@ -19,5 +20,6 @@ namespace Backend_Feature_api.src.dbcontext
                 .IsUnique();
         }
         public DbSet<Product> product { get; set; }
+        public DbSet<Movement> movements { get; set; }
     }
 }

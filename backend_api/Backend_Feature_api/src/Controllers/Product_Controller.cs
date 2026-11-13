@@ -54,7 +54,7 @@ namespace Backend_Feature_api.src.Controllers
 
             await _productRepo.CreateAsync(productDTO);
 
-            return CreatedAtAction(nameof(GetById), new { id = productDTO.ProductId }, productDTO);
+            return CreatedAtAction(nameof(GetById), new { id = productDTO.ProductId}, productDTO);
         }
 
         [HttpPut("{id:int}")]

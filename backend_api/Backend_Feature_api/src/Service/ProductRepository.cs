@@ -1,9 +1,11 @@
 ﻿using Backend_Feature_api.DTO.Product_DTO;
 using Backend_Feature_api.src.dbcontext;
+using Backend_Feature_api.src.DTO.Movement_DTO;
 using Backend_Feature_api.src.DTO.Product_DTO;
 using Backend_Feature_api.src.Helpers;
 using Backend_Feature_api.src.@interface;
 using Backend_Feature_api.src.Mapper;
+using Backend_Feature_api.src.Model;
 using Microsoft.EntityFrameworkCore;
 using warehouse.Models;
 
@@ -12,9 +14,11 @@ namespace Backend_Feature_api.src.Service
     public class ProductRepository : IProductRepository
     {
         private readonly ApplicationDbContext _context;
-        public ProductRepository(ApplicationDbContext context)
+        private readonly IMovementRepository _movementRepo;
+        public ProductRepository(ApplicationDbContext context,IMovementRepository movementRepo)
         {
             _context = context;
+            _movementRepo = movementRepo;
         }
 
         public async Task<Product> CreateAsync(CreateProductDTO productDTO)
@@ -26,6 +30,17 @@ namespace Backend_Feature_api.src.Service
 
             product.Code = $"SKU-{product.ProductId + 99}";
             await _context.SaveChangesAsync();
+
+            #region movement_stash
+            /*var movement = new CreateMovementDTO
+            {
+                ProductName = product.ProductName,
+                Datetime = DateTime.Now,
+            };*/
+
+            /* await _movementRepo.CreateAsync(movement);
+             await _context.SaveChangesAsync();*/
+            #endregion
 
             return product;
 

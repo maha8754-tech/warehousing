@@ -12,6 +12,5 @@ namespace Backend_Feature_api.DTO.Product_DTO
         public int Stock { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
-        public string Status { get; set; } = string.Empty;
     }
 }
