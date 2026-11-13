@@ -269,9 +269,9 @@ export default function Products() {
             </div>
             {/* view */}
             <div className="flex gap-x-5 justify-center items-center">
-                <LayoutDashboard size={30} className="bg-gray-200 p-1 rounded-lg cursor-pointer" />
-                <LayoutDashboard size={30} className="bg-gray-200 p-1 rounded-lg cursor-pointer" />
-                <LayoutDashboard size={30} className="bg-gray-200 p-1 rounded-lg cursor-pointer" />
+                <LayoutDashboard size={30} className="bg-gray-200 p-1 rounded-lg cursor-pointer text-black" />
+                <LayoutDashboard size={30} className="bg-gray-200 p-1 rounded-lg cursor-pointer text-black" />
+                <LayoutDashboard size={30} className="bg-gray-200 p-1 rounded-lg cursor-pointer text-black" />
                 
             </div>
           </div>
@@ -312,7 +312,7 @@ export default function Products() {
                                 </td>
                                 <td className="relative">
                                     <button onClick={() => setOpenAction(openAction === u.productId ? null : u.productId)} type="button" className=" p-0.5 cursor-pointer">
-                                        <List />
+                                        <List className="text-black" />
                                     </button>
                                     {openAction === u.productId && (
                                         <div className="  grid rounded-2xl bg-black/50 w-25 h-22 py-2 absolute right-2" >
@@ -449,13 +449,12 @@ export default function Products() {
                                 </td>
                             </tr>
                             ))}
-                            
-                             {/* Record #2 */}
-                            <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
+
+                            {/* Record #2 */}
+                            <tr  className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                                 <td className="pl-5">
                                     <div className="">
                                         <span className="text-black">2</span>
-                                        
                                     </div>
                                 </td>
                                 <td className="flex gap-x-1 text-black">
@@ -490,7 +489,6 @@ export default function Products() {
                                     )}
                                 </td>
                             </tr>
-
                             {/* Record #3 */}
                             {/* <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                                 <td className="pl-5">
