@@ -11,7 +11,6 @@ namespace Backend_Feature_api.src.Mapper
             {
                 Code = ProductDTO.Code,
                 Stock = ProductDTO.Stock,
-                Status = ProductDTO.Status,
                 ProductName = ProductDTO.ProductName,
                 Price = ProductDTO.Price,
                 Category = ProductDTO.Category
