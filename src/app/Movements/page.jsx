@@ -166,7 +166,7 @@ export default function Movements() {
           </div>
           {/* row 3 */}
           <div className="">
-            <table className="m-auto">
+            <table className="grid m-auto w-240">
                         <thead className="grid h-8 rounded-t-2xl text-gray-500 top-0 bg-blue-100 border-b-2 border-gray-300">
                             <tr className="flex gap-x-25 items-center border-b border-gray-800 w-240">
                                 <th className="pl-5 text-gray-500">#</th>
@@ -183,7 +183,7 @@ export default function Movements() {
                         <tbody className="grid gap-y-1 bg-white rounded-b-xl">
                             {/* Record #1 */}
                             {Movements.map((u) => (
-                                <tr key={u.movementid} className="grid grid-cols-[10%_25%_12%_15%_12%_30%] border-b border-gray-800 mt-2">
+                                <tr key={u.movementid} className="grid grid-cols-[13%_20%_14.5%_19%_13%_20%] border-b border-gray-800 mt-2">
                                     <td className="pl-5 text-black">{u.movementid}</td>
                                     {/* flex font-semibold items-center gap-x-1 text-sm text-black bg-black/10 w-5.5 h-6.5 rounded-4xl" */}
                                     <td className="flex gap-x-5 text-black">
@@ -197,7 +197,7 @@ export default function Movements() {
                             ))}
 
                             {/* Record #2 */}
-                            <tr className="grid grid-cols-[13%_20%_15%_19%_12%_20%] border-b border-gray-800 mt-1">
+                            <tr className="grid grid-cols-[13%_20%_14.5%_19%_13%_20%] border-b border-gray-800 mt-1">
                                 <td className="pl-5">
                                     <div className="">
                                         <span className="text-black">2</span>
