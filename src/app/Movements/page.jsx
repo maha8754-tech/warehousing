@@ -176,16 +176,16 @@ export default function Movements() {
                         <tbody className="grid gap-y-1 bg-white rounded-b-xl">
                             {/* Record #1 */}
                             {Movements.map((u) => (
-                                <tr key={u.movementid} className="grid grid-cols-[13%_20%_14.5%_19%_13%_20%] border-b border-gray-800 mt-2">
+                                <tr key={u.movementid} className="grid grid-cols-[13%_20%_14.5%_19%_13%_20%] border-b border-gray-800 mt-1">
                                     <td className="pl-5 text-black">{u.movementid}</td>
                                     {/* flex font-semibold items-center gap-x-1 text-sm text-black bg-black/10 w-5.5 h-6.5 rounded-4xl" */}
-                                    <td className="flex gap-x-5 text-black">
+                                    <td className="flex gap-x-1 text-black">
                                         {u.datetime}
                                     </td>
-                                    <td className="text-black">{u.type}</td>
+                                    <td className="flex text-green-800 bg-green-500/35 font-bold text-sm rounded-2xl px-2 py-1 w-fit justify-center">{u.type}</td>
                                     <td className="text-black">{u.productName}</td>
                                     <td className="text-black">{u.quantity}</td>
-                                    <td className="text-black">{u.warehouse}</td>
+                                    <td className="ml-5 text-black">{u.warehouse}</td>
                                 </tr>
                             ))}
 
