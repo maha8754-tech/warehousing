@@ -5,7 +5,7 @@ import { Info, Package } from "lucide-react"
 export default function Stock() {
     return(
         // className="grid gap-y-5 bg-blue-200 w-265 max-h-screen rounded-2xl"
-       <div className="grid gap-y-5 bg-red-700 w-265 max-h-screen rounded-2xl">
+       <div className="grid gap-y-5 bg-blue-100 w-265 max-h-screen rounded-2xl">
             <div className="flex justify-between ml-5 mt-1">
                 <div>
                     <h1 className="text-2xl text-black">Stock</h1>
@@ -15,8 +15,8 @@ export default function Stock() {
                     </span>
                 </div>
             </div>
-            <div className="grid grid-cols-[30%_70%] w-40 bg-white rounded-2xl gap-2">
-                <div className="pl-2">
+            <div className="grid grid-cols-[30%_70%] w-50 bg-white rounded-2xl gap-0 pt-2">
+                <div className="pl-4">
                     <Package />
                 </div>
                 <div>
