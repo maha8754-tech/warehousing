@@ -5,7 +5,7 @@ import { Info, Package } from "lucide-react"
 export default function Stock() {
     return(
         // className="grid gap-y-5 bg-blue-200 w-265 max-h-screen rounded-2xl"
-       <div className="grid gap-y-5 bg-blue-100 w-265 max-h-screen rounded-2xl">
+       <div className="grid gap-y-5 bg-blue-100 w-full max-h-screen rounded-2xl">
             <div className="flex justify-between ml-5 mt-1">
                 <div>
                     <h1 className="text-2xl text-black">Stock</h1>

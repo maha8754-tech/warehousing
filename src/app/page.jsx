@@ -20,12 +20,12 @@ export default function Home() {
       />
     </aside>
     <div className="mt-3">
-      <header className="flex items-center justify-between border-b border-white shadow-black/25 shadow-[0_12px_8px_-4px_rgba(0,0,0,0.15)] bg-white h-16 rounded-2xl w-265">
+      <header className="flex items-center justify-between border-b border-white shadow-black/25 shadow-[0_12px_8px_-4px_rgba(0,0,0,0.15)] bg-white h-16 rounded-2xl w-full">
         <Header
           activePage={activePage}
         />
       </header>
-      <main className="grid mt-2 w-265">
+      <main className="grid mt-2 w-full">
         {activePage === "Dashboard" && (
           <Dashboard/>
         )}

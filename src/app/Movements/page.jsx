@@ -116,7 +116,7 @@ export default function Movements() {
  
     
     return(
-        <div className="grid gap-y-5 bg-blue-200 w-265 max-h-screen rounded-2xl">
+        <div className="grid gap-y-5 bg-blue-200 w-full max-h-screen rounded-2xl">
           {/* row 1 */}
           <div className="flex justify-between ml-5 mt-1">
             <div>
