@@ -29,8 +29,15 @@ namespace Backend_Feature_api.src.Service
             try
             {
                 var product = productDTO.ToProduct();
-                
-                product.Code = $"TEMP-{Guid.NewGuid():N}";
+
+                if (product.Quantity >= 1 && product.Quantity <= 100)
+                    product.Status = "Low Stock";
+                else if (product.Quantity >= 101 && product.Quantity <= 500)
+                    product.Status = "Average Stock";
+                else if (product.Quantity > 500)
+                    product.Status = "Hight Stock";
+						
+					product.Code = $"TEMP-{Guid.NewGuid():N}";
 
                 await _context.product.AddAsync(product);
                 await _context.SaveChangesAsync();
