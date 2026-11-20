@@ -1,14 +1,12 @@
 "use client"
 
 import { Bell, ClosedCaption, Coins, DollarSign, Edit, Edit3, Info, LayoutDashboard, LayoutGrid, List, Package, Package2, PackagePlus, Plus, Ratio, Search, Tag, Trash, UserRoundArrowLeft, Verified, View, X, XCircle, XLineTop, XOctagon } from "lucide-react"
-import { useState , useEffect, useRef } from "react"
-import { requestFormReset } from "react-dom";
+import { useState , useEffect } from "react"
 
 
 export default function Products() {
     const [openAction , setOpenAction] = useState(null);
     const [addProduct , setAddProduct] = useState(false);
-    const formRef = useRef(null)
     const [form , setForm] = useState({productName:"", category:"", quantity:"", price:"",})
     const [products , setProducts] = useState([]) 
     const [editId , setEditId] = useState(null)
