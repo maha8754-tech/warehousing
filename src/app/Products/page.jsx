@@ -111,7 +111,7 @@ export default function Products() {
     const handleClose = () => {
         setForm({productName:"", category:"", quantity:"", price:""});
         formRef.current?.reset()
-        setAddProduct(false)
+        setAddProduct(!addProduct)
     }
     
     // if (loading) return <p className="text-purple-500">product get now...</p>
