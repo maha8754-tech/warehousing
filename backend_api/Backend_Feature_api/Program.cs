@@ -1,6 +1,7 @@
 using Backend_Feature_api.src.dbcontext;
 using Backend_Feature_api.src.@interface;
 using Backend_Feature_api.src.Service;
+using Backend_Feature_api.Util;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 
@@ -70,6 +71,14 @@ app.MapGet("/", async context =>
     await Task.CompletedTask;
 });
 
+app.MapGet("/test", () =>
+{
+    var result = Util.ConvertTo_Formal_Price(1234567890);
+
+    Console.WriteLine($"Result comma format: {result.comma_format}\nResult underscore format : {result.underscore_format}");
+
+    return Results.Ok(result.comma_format);
+});
 
 
 app.Run();

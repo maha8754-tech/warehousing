@@ -7,6 +7,7 @@ using Backend_Feature_api.src.@interface;
 using Backend_Feature_api.src.Mapper;
 using Backend_Feature_api.src.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using warehouse.Models;
 
 namespace Backend_Feature_api.src.Service
@@ -39,7 +40,8 @@ namespace Backend_Feature_api.src.Service
 						
 					product.Code = $"TEMP-{Guid.NewGuid():N}";
 
-                await _context.product.AddAsync(product);
+
+				await _context.product.AddAsync(product);
                 await _context.SaveChangesAsync();
 
                 product.Code = $"SKU-{product.ProductId + 99}";
