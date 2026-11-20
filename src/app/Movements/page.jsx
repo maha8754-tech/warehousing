@@ -159,7 +159,7 @@ export default function Movements() {
           </div>
           {/* row 3 */}
           <div className="">
-            <table className="grid m-auto w-240">
+            <table className="grid  w-265">
                         <thead className="grid h-8 rounded-t-2xl text-gray-500 top-0 bg-blue-100 border-b-2 border-gray-300">
                             <tr className="flex gap-x-21 items-center border-b border-gray-800 w-240">
                                 <th className="pl-5 text-gray-500">#</th>
@@ -220,7 +220,7 @@ export default function Movements() {
                                 <td className="text-black">lap top</td>
                                 <td className="text-black">20</td>
                                 <td className="ml-5 text-black">Main Warehouse</td>
-                            </tr>
+                        </tr>
                         </tbody>
                         </table>
           </div>
