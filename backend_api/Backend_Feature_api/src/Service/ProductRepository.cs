@@ -36,7 +36,7 @@ namespace Backend_Feature_api.src.Service
                 else if (product.Quantity >= 101 && product.Quantity <= 500)
                     product.Status = "Average Stock";
                 else if (product.Quantity > 500)
-                    product.Status = "Hight Stock";
+                    product.Status = "High Stock";
 						
 					product.Code = $"TEMP-{Guid.NewGuid():N}";
 
