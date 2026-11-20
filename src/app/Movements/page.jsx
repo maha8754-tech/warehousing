@@ -174,8 +174,8 @@ export default function Movements() {
                     </thead>
 
                     <tbody className="grid gap-y-1 bg-white rounded-b-xl">
-                        {/* Record #1    */}
-                        <tr className="flex gap-x-20">
+                        {/* Record #1 */}
+                        <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                             <td className="text-black">ghj</td>
                             <td>ghj</td>
                             <td>ghj</td>
