@@ -149,7 +149,7 @@ export default function Products() {
                                     <h2 className="text-black font-bold text-md">Add New Product</h2>
                                     <span className="text-gray-500 text-[12px]">Enter the new product information.</span>
                                 </div>
-
+                            </div>
                         </header>
 
                         <main className="grid w-full">
@@ -195,22 +195,6 @@ export default function Products() {
                                     <div className="flex flex-col gap-2">
                                         <div className="flex">
                                             <Bell size={17} className="text-blue-500" />
-                                            <label htmlFor="stock" className="text-sm text-black">Stock</label>
-                                        </div>
-                                        <input
-                                            type="number"
-                                            name="stock"
-                                            required
-                                            placeholder="0"
-                                            value={form.stock}
-                                            onChange={handleChange}
-                                            className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
-                                        />
-                                    </div>
-
-                                    <div className="flex flex-col gap-2">
-                                        <div className="flex">
-                                            <Bell size={17} className="text-blue-500" />
                                             <label htmlFor="quantity" className="text-sm text-black">Stock</label>
                                         </div>
                                         <input
@@ -225,21 +209,29 @@ export default function Products() {
                                     </div>
 
                                     <div className="flex flex-col gap-2">
+                                        <div className="flex">
+                                            <DollarSign size={17} className="text-blue-500" />
+                                            <label htmlFor="price" className="text-sm text-black">Price</label>
+                                        </div>
+                                        <input
+                                            type="number"
+                                            name="price"
+                                            required
+                                            autoComplete="price"
+                                            placeholder="2,000,000"
+                                            value={form.price}
+                                            onChange={handleChange}
+                                            className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col gap-2">
                                         <input
                                             type="reset"
-                                            // value={formData.productname}
                                             className="cursor-pointer bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                                         />
                                     </div>
                                 </div>
-
-                                <div className="flex flex-col gap-2">
-                                    <input
-                                        type="reset"
-                                        className="cursor-pointer bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
-                                    />
-                                </div>
-
                                 <div className="flex gap-5 justify-center">
                                     <button
                                         type="submit"
