@@ -149,6 +149,7 @@ export default function Products() {
                                 <h2 className="text-black font-bold text-md">Add New Product</h2>
                                 <span className="text-gray-500 text-[12px]">Enter the new product information.</span>
                             </div>
+                      
                         </header>
 
                         <main className="grid w-full">
@@ -238,7 +239,7 @@ export default function Products() {
                                         className="cursor-pointer bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                                     />
                                 </div>
-                            </div>
+
                             <div className="flex gap-5 justify-center">
                                 <button 
                                     type="submit"
