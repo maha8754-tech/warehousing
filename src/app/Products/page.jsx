@@ -1,17 +1,19 @@
 "use client"
 
 import { Bell, ClosedCaption, Coins, DollarSign, Edit, Edit3, Info, LayoutDashboard, LayoutGrid, List, Package, Package2, PackagePlus, Plus, Ratio, Search, Tag, Trash, UserRoundArrowLeft, Verified, View, X, XCircle, XLineTop, XOctagon } from "lucide-react"
-import { useState , useEffect } from "react"
+import { useState , useEffect, useRef } from "react"
+import { requestFormReset } from "react-dom";
 
 
 export default function Products() {
     const [openAction , setOpenAction] = useState(null);
     const [addProduct , setAddProduct] = useState(false);
-    const [form , setForm] = useState({productName:"", category:"", stock:"", price:"",})
+    const formRef = useRef(null)
+    const [form , setForm] = useState({productName:"", category:"", quantity:"", price:"",})
     const [products , setProducts] = useState([]) 
     const [editId , setEditId] = useState(null)
     const [editPopup , setEditPopup] = useState(false)
-    const [loading , setLoading] = useState(true) 
+    const [loading , setLoading] = useState(false) 
     const [error , setError] = useState("")
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const loadGetProducts = async () => {
@@ -46,7 +48,7 @@ export default function Products() {
             })
             if(response.ok){
                     alert("saved")
-                    setForm({productName:"", category:"", stock:"", price:""});
+                    setForm({productName:"", category:"", quantity:"", price:""});
                     loadGetProducts()
                 }else{
                     alert("error")
@@ -93,19 +95,25 @@ export default function Products() {
     }
     const handleEdit = (u) =>{
         setEditId(u.productId)
-        setForm({productName:u.productName, category:u.category, stock:u.stock, price:u.price});
+        setForm({productName:u.productName, category:u.category, quantity:u.quantity, price:u.price});
         setEditPopup(true)
     }
 
     const closeModal = () => {
         setEditId(null)
-        setForm({productName:"", category:"", stock:"", price:""});
+        setForm({productName:"", category:"", quantity:"", price:""});
         setEditPopup(false)
     }
 
     const handleEditSubmit = (e) => {
         e.preventDefault()
         updateProduct()
+    }
+
+    const handleClose = () => {
+        setForm({productName:"", category:"", quantity:"", price:""});
+        formRef.current?.reset()
+        setAddProduct(false)
     }
     
     // if (loading) return <p className="text-purple-500">product get now...</p>
@@ -132,7 +140,7 @@ export default function Products() {
             </div>
           </div>
           {addProduct && (
-            <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/50">
+            <div onClose={() => setAddProduct(false)} className="fixed inset-0 z-100 flex items-center justify-center bg-black/50">
                 <div className="grid grid-rows-[16%_68%_15%] bg-white/95 w-150 h-100 rounded-2xl">
                     <header className="bg-blue-100 h-15.5 rounded-t-2xl">
                         <div className="flex gap-x-2.5 mt-3">
@@ -189,14 +197,14 @@ export default function Products() {
                                 <div className="flex flex-col gap-2">
                                     <div className="flex">
                                         <Bell size={17} className="text-blue-500"/>
-                                        <label htmlFor="stock" className="text-sm text-black">Stock</label>
+                                        <label htmlFor="quantity" className="text-sm text-black">Stock</label>
                                     </div>
                                     <input 
                                         type="number"
-                                        name="stock"
+                                        name="quantity"
                                         required
                                         placeholder="0"
-                                        value={form.stock}
+                                        value={form.quantity}
                                         onChange={handleChange}
                                         className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                                     />
@@ -222,7 +230,6 @@ export default function Products() {
                                 <div className="flex flex-col gap-2">
                                     <input 
                                         type="reset"
-                                        // value={formData.productname}
                                         className="cursor-pointer bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                                     />
                                 </div>
@@ -235,7 +242,7 @@ export default function Products() {
                                     <Verified size={22}/>
                                     {loading ? 'server sed now...' : 'Verify product'}
                                 </button>
-                                <button onClick={() => setAddProduct(!addProduct)} className="flex gap-4 items-center w-35 h-11 text-sm text-gray-500 cursor-pointer px-3 rounded-xl hover:text-white hover:bg-red-500 focus:bg-white focus:text-blue-500 border-2 border-gray-500" type="button">
+                                <button onClick={handleClose} className="flex gap-4 items-center w-35 h-11 text-sm text-gray-500 cursor-pointer px-3 rounded-xl hover:text-white hover:bg-red-500 focus:bg-white focus:text-blue-500 border-2 border-gray-500" type="button">
                                     <XCircle size={22}/>
                                     Cancle
                                 </button>
@@ -263,8 +270,9 @@ export default function Products() {
                 {/* status */}
                 <select name="" className="text-black border-2 border-gray-200 rounded-lg py-1.5 px-3 w-40 cursor-pointer">
                     <option className="text-black" value="">all status</option>
-                    <option className="text-black" value="">in stock</option>
-                    <option className="text-black" value="">low stock</option>
+                    <option className="text-black" value="">Low stock</option>
+                    <option className="text-black" value="">Average stock</option>
+                    <option className="text-black" value="">High stock</option>
                 </select>
             </div>
             {/* view */}
@@ -279,15 +287,15 @@ export default function Products() {
           <div className="">
             <table className="grid m-auto w-257">
                         <thead className="grid h-8 rounded-t-2xl text-gray-500 top-0 bg-blue-100 border-b-2 border-gray-300">
-                            <tr className="flex gap-x-21 items-center border-b border-gray-800 w-257">
+                            <tr className="flex gap-x-20.5 items-center border-b border-gray-800 w-257">
                                 <th className="pl-5 text-gray-500">#</th>
                                 <th className="text-gray-500">Product Name</th>
                                 <th className="text-gray-500">Code</th>
                                 <th className="text-gray-500">Category</th>
-                                <th className="text-gray-500">Stock</th>
+                                <th className="text-gray-500">Quantity</th>
                                 <th className="text-gray-500">Price</th>
                                 <th className="text-gray-500">Status</th>
-                                <th className="text-gray-500">Actions</th>
+                                <th className="text-gray-500">Action</th>
                             </tr>
                         </thead>
 
@@ -303,7 +311,7 @@ export default function Products() {
                                 </td>
                                 <td className="text-black">{u.code}</td>
                                 <td className="text-black">{u.category}</td>
-                                <td className="text-black">{u.stock}</td>
+                                <td className="text-black">{u.quantity}</td>
                                 <td className="text-black">{u.price} T</td>
                                 <td className="">
                                     <div className="flex bg-green-200/60 rounded-2xl py-1 px-2 w-32 justify-center">
@@ -334,8 +342,8 @@ export default function Products() {
                                                                     <Package className="text-white"/>
                                                                 </div>
                                                                 <div>
-                                                                    <h2 className="text-black font-bold text-md">Add New Product</h2>
-                                                                    <span className="text-gray-500 text-[12px]">Enter the new product information.</span>
+                                                                    <h2 className="text-black font-bold text-md">Edit now Product</h2>
+                                                                    <span className="text-gray-500 text-[12px]">Edit the product information.</span>
                                                                 </div>
                                                             </div>
                                                         </header>
@@ -373,24 +381,24 @@ export default function Products() {
                                                                             /*</div>value={form.category} onChange={handelChange} required */
                                                                             className="cursor-pointer bg-black/50 w-full h-12 rounded-2xl text-white outline-none border border-white/10 focus:border-white/40"
                                                                         >
-                                                                            <option value="Category Choice..." hidden className="">Category Choice...</option>
-                                                                            <option value="Electronics">Electronics</option>
-                                                                            <option value="Accessories">Accessories</option>
-                                                                            <option value="Office Supplies">Office Supplies</option>
+                                                                            <option value="Category Choice..." hidden className="text-black">Category Choice...</option>
+                                                                            <option value="Electronics" className="text-black">Electronics</option>
+                                                                            <option value="Accessories" className="text-black">Accessories</option>
+                                                                            <option value="Office Supplies" className="text-black">Office Supplies</option>
                                                                         </select>
                                                                     </div>
-
+                                                                    
                                                                     <div className="flex flex-col gap-2">
                                                                         <div className="flex">
                                                                             <Bell size={17} className="text-blue-500"/>
-                                                                            <label htmlFor="stock" className="text-sm text-black">Stock</label>
+                                                                            <label htmlFor="stock" className="text-sm text-black">Quantity</label>
                                                                         </div>
                                                                         <input 
                                                                             type="number"
                                                                             name="stock"
                                                                             required
                                                                             placeholder="0"
-                                                                            value={form.stock}
+                                                                            value={form.quantity}
                                                                             onChange={handleChange}
                                                                             className="bg-black/50 w-full h-12 rounded-2xl text-amber-50 outline-none border border-white/10 focus:border-white/40"
                                                                         />
