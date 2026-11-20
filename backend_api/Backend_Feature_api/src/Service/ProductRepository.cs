@@ -7,6 +7,7 @@ using Backend_Feature_api.src.@interface;
 using Backend_Feature_api.src.Mapper;
 using Backend_Feature_api.src.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using warehouse.Models;
 
 namespace Backend_Feature_api.src.Service
@@ -23,30 +24,51 @@ namespace Backend_Feature_api.src.Service
 
         public async Task<Product> CreateAsync(CreateProductDTO productDTO)
         {
-            var product = productDTO.ToProduct();
+            await using var transaction =
+                await _context.Database.BeginTransactionAsync();
 
-            await _context.product.AddAsync(product);
-            await _context.SaveChangesAsync();
-
-            product.Code = $"SKU-{product.ProductId + 99}";
-            await _context.SaveChangesAsync();
-
-            #region movement_stash
-            var movement = new CreateMovementDTO
+            try
             {
-                ProductName = product.ProductName,
-                Datetime = DateTime.Now,
-                Quantity = 10,
-                Type = "will change type",
-                warehouse = "will change warehouse"
-            };
+                var product = productDTO.ToProduct();
 
-            await _movementRepo.CreateAsync(movement);
-            #endregion
+                if (product.Quantity >= 1 && product.Quantity <= 100)
+                    product.Status = "Low Stock";
+                else if (product.Quantity >= 101 && product.Quantity <= 500)
+                    product.Status = "Average Stock";
+                else if (product.Quantity > 500)
+                    product.Status = "Hight Stock";
+						
+					product.Code = $"TEMP-{Guid.NewGuid():N}";
 
-            return product;
+
+				await _context.product.AddAsync(product);
+                await _context.SaveChangesAsync();
+
+                product.Code = $"SKU-{product.ProductId + 99}";
+
+                await _context.SaveChangesAsync();
+
+                var movement = new CreateMovementDTO
+                {
+                    ProductName = product.ProductName,
+                    Datetime = DateTime.Now.ToString("HH:MM"),
+                    Quantity = 10,
+                    Type = "yo",
+                    warehouse = "yo"
+                };
+
+                await _movementRepo.CreateAsync(movement);
+
+                await transaction.CommitAsync();
+
+                return product;
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
         }
-
         public async Task<Product> DeleteAsync(int id)
         {
             var product = await GetByIdAsync(id);
@@ -71,9 +93,9 @@ namespace Backend_Feature_api.src.Service
         {
             var Products = _context.product.AsQueryable();
 
-            if (query.Stock.HasValue)
+            if (query.Quantity.HasValue)
             {
-                Products = Products.Where(p => p.Stock == query.Stock.Value);
+                Products = Products.Where(p => p.Quantity == query.Quantity.Value);
             }
 
             if (query.Price.HasValue)
@@ -110,7 +132,7 @@ namespace Backend_Feature_api.src.Service
             {
                 if (query.SortBy.Equals("Stock", StringComparison.OrdinalIgnoreCase))
                 {
-                    Products = query.isDecsending ? Products.OrderByDescending(s => s.Stock) : Products.OrderBy(s => s.Stock);
+                    Products = query.isDecsending ? Products.OrderByDescending(s => s.Quantity) : Products.OrderBy(s => s.Quantity);
                 }
 
                 if (query.SortBy.Equals("Price", StringComparison.OrdinalIgnoreCase))
@@ -135,19 +157,26 @@ namespace Backend_Feature_api.src.Service
         {
             var old_product = await GetByIdAsync(id);
 
-            if(old_product == null)
-            {
+            if (old_product == null)
                 return null;
-            }
 
-            old_product.Code = productDTO.Code;
-            old_product.Price= productDTO.Price;
+            old_product.Price = productDTO.Price;
             old_product.ProductName = productDTO.ProductName;
             old_product.Status = productDTO.Status;
-            old_product.Stock = productDTO.Stock;
-            old_product.Category = productDTO.Category;
+            old_product.Quantity = productDTO.Quantity;
+			old_product.Category = productDTO.Category;
 
             await _context.SaveChangesAsync();
+
+            var movement = new CreateMovementDTO
+            {
+                Datetime = DateTime.Now.ToString("HH:mm"),
+                ProductName = old_product.ProductName,
+                Quantity = 100,
+                Type = "doesn't have any substutie",
+                warehouse = "empty"
+            };
+            await _movementRepo.CreateAsync(movement);
 
             return old_product;
         }

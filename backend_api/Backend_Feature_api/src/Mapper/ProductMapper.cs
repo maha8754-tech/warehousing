@@ -10,8 +10,8 @@ namespace Backend_Feature_api.src.Mapper
             return new Product
             {
                 Code = ProductDTO.Code,
-                Stock = ProductDTO.Stock,
-                ProductName = ProductDTO.ProductName,
+				Quantity = ProductDTO.Quantity,
+				ProductName = ProductDTO.ProductName,
                 Price = ProductDTO.Price,
                 Category = ProductDTO.Category
             };

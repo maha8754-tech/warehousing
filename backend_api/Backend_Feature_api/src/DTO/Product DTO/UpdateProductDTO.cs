@@ -7,9 +7,8 @@ namespace Backend_Feature_api.src.DTO.Product_DTO
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; } = string.Empty;
-        public string Code { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
-        public int Stock { get; set; }
+        public int Quantity { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         public string Status { get; set; } = string.Empty;

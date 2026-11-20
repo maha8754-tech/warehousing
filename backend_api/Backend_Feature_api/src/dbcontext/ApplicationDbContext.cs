@@ -18,6 +18,14 @@ namespace Backend_Feature_api.src.dbcontext
             modelBuilder.Entity<Product>().
                 HasIndex(p => p.Code)
                 .IsUnique();
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasKey(p => p.ProductId);
+
+                entity.Property(p => p.ProductId)
+                    .UseIdentityColumn(1, 1);
+            });
         }
         public DbSet<Product> product { get; set; }
         public DbSet<Movement> movements { get; set; }

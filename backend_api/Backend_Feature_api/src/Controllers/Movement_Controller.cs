@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.RateLimiting;
 
 namespace Backend_Feature_api.src.Controllers
 {
-    [Route("api/Movement")]
+    [Route("api/Movements")]
     [ApiController]
     [EnableRateLimiting("fixed")]
     public class Movement_Controller : ControllerBase
