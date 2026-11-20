@@ -177,12 +177,11 @@ export default function Movements() {
                         {/* Record #1 */}
                         <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                             <td className="text-black">ghj</td>
-                            <td>ghj</td>
-                            <td>ghj</td>
-                            <td>ghj</td>
-                            <td>ghj</td>
-                            <td>ghj</td>
-                            <td>ghj</td>
+                            <td className="text-black">ghj</td>
+                            <td className="text-black">ghj</td>
+                            <td className="text-black">ghj</td>
+                            <td className="text-black">ghj</td>
+                            <td className="text-black">ghj</td>
                         </tr>
                         {Movements.map((u) => (
                             // grid grid-cols-[10%_20%_14.5%_19%_13%_20%]

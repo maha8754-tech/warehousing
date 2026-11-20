@@ -109,9 +109,8 @@ export default function Products() {
     }
 
     const handleClose = () => {
-        setForm({ productName: "", category: "", quantity: "", price: "" });
-        formRef.current?.reset()
-        setAddProduct(!addProduct)
+        setForm({ productName: "", category: "", quantity: "", price: "" })
+        setAddProduct(false)
     }
 
     // if (loading) return <p className="text-purple-500">product get now...</p>
@@ -119,7 +118,7 @@ export default function Products() {
 
 
     return (
-        <div className="grid gap-y-5 bg-blue-200 w-265 max-h-screen rounded-2xl">
+        <div className="grid gap-y-5 bg-blue-200 w-full max-h-screen rounded-2xl">
             {/* row 1 */}
             <div className="flex justify-between ml-5 mt-1">
                 <div>
@@ -283,9 +282,9 @@ export default function Products() {
             </div>
             {/* row 3 */}
             <div className="">
-                <table className="grid m-auto w-257">
+                <table className="grid m-auto w-260">
                     <thead className="grid h-8 rounded-t-2xl text-gray-500 top-0 bg-blue-100 border-b-2 border-gray-300">
-                        <tr className="flex gap-x-20.5 items-center border-b border-gray-800 w-257">
+                        <tr className="flex gap-x-20.5 items-center border-b border-gray-800 w-260">
                             <th className="pl-5 text-gray-500">#</th>
                             <th className="text-gray-500">Product Name</th>
                             <th className="text-gray-500">Code</th>
