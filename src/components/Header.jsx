@@ -8,6 +8,7 @@ export default function Header({activePage}) {
     const [isOpan , setIsOpen] = useState("false")
     const [modalOpen , setModalOpen] = useState(false)
     return(
+        // w-265
         <div className="grid grid-cols-[38%_36%_26%] w-265">
             <div className="flex flex-row items-center gap-x-3">
                 {/* ======================== menu =============================== */}
