@@ -16,8 +16,8 @@ public class Product
     [Required]
     public int Quantity { get; set; }
     [Required]
-    [Column(TypeName = "decimal(18,2)")]
-    public decimal Price { get; set; }
+    //[Column(TypeName = "decimal(18,2)")]
+    public string Price { get; set; }
     [Required]
     public string Status { get; set; } = string.Empty;
 }

@@ -73,7 +73,7 @@ app.MapGet("/", async context =>
 
 app.MapGet("/test", () =>
 {
-    var result = Util.ConvertTo_Formal_Price(1234567890);
+    var result = Util.ConvertTo_Formal_Price(1234567890.ToString());
 
     Console.WriteLine($"Result comma format: {result.comma_format}\nResult underscore format : {result.underscore_format}");
 
