@@ -4,10 +4,10 @@ namespace Backend_Feature_api.Util
 {
 	public static class Util
 	{
-		public static (string comma_format, string underscore_format) ConvertTo_Formal_Price(int value)
+		public static (string comma_format, string underscore_format) ConvertTo_Formal_Price(string value)
 		{
 			StringBuilder builder = new();
-			string value_str = value.ToString();
+			string value_str = value;
 			int count = 0;
 
 			for (int i = value_str.Length - 1; i >= 0; i--)
@@ -28,8 +28,6 @@ namespace Backend_Feature_api.Util
 			string final = string.Join(null, arr);
 
 			return (final, final.Replace(",", "_"));
-
-			// hello 
 		}
 	}
 }

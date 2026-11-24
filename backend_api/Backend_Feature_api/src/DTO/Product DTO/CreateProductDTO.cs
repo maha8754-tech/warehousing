@@ -10,7 +10,7 @@ namespace Backend_Feature_api.DTO.Product_DTO
         public string Code { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
         public int Quantity { get; set; }
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Price { get; set; }
+        //[Column(TypeName = "decimal(18,2)")]
+        public string Price { get; set; }
     }
 }

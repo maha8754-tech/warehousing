@@ -8,6 +8,7 @@ using Backend_Feature_api.src.Mapper;
 using Backend_Feature_api.src.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Price_Mapper = Backend_Feature_api.Util.Util;
 using warehouse.Models;
 
 namespace Backend_Feature_api.src.Service
@@ -39,6 +40,8 @@ namespace Backend_Feature_api.src.Service
                     product.Status = "High Stock";
 						
 					product.Code = $"TEMP-{Guid.NewGuid():N}";
+
+                product.Price = Price_Mapper.ConvertTo_Formal_Price(productDTO.Price).comma_format;
 
 
 				await _context.product.AddAsync(product);
@@ -100,7 +103,7 @@ namespace Backend_Feature_api.src.Service
 
             if (query.Price.HasValue)
             {
-                Products = Products.Where(p => p.Price == query.Price.Value);
+                Products = Products.Where(p => Convert.ToInt32(p.Price) == query.Price.Value);
             }
 
             if (!string.IsNullOrWhiteSpace(query.ProductName))
