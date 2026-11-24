@@ -4,6 +4,7 @@ using Backend_Feature_api.src.DTO.Product_DTO;
 using Backend_Feature_api.src.Helpers;
 using Backend_Feature_api.src.@interface;
 using Backend_Feature_api.src.Mapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using warehouse.Models;
@@ -22,6 +23,7 @@ namespace Backend_Feature_api.src.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll([FromQuery] ProductQueryObject query)
         {
             if (!ModelState.IsValid)
