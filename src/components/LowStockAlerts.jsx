@@ -12,7 +12,7 @@ const PRODUCTS = [
 // At or below this fraction of the minimum, the stock number is shown in red.
 const CRITICAL_RATIO = 0.75;
 
-export default function LowStockAlerts({ viewAllHref = "/Products?Status=Low20%average" }) {
+export default function LowStockAlerts({ viewAllHref = "/Products?Status=Low%20Stock" }) {
   const [products, setProducts] = useState([])
 
   const loadGetProducts = async () => {

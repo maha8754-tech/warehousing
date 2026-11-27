@@ -388,11 +388,11 @@ export default function Products() {
                                                                     <div className="flex flex-col gap-2">
                                                                         <div className="flex">
                                                                             <Bell size={17} className="text-blue-500" />
-                                                                            <label htmlFor="stock" className="text-sm text-black">Quantity</label>
+                                                                            <label htmlFor="quantity" className="text-sm text-black">Quantity</label>
                                                                         </div>
                                                                         <input
                                                                             type="number"
-                                                                            name="stock"
+                                                                            name="quantity"
                                                                             required
                                                                             placeholder="0"
                                                                             value={form.quantity}
