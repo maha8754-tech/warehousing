@@ -20,7 +20,7 @@ export default function LowStockAlerts({ viewAllHref = "/Products?Status=Low20%a
           const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
           const response = await fetch(
-              `${baseUrl}/api/Products?Low%20average`)
+              `${baseUrl}/api/Products?Status=Low%20average`)
           if (!response.ok) {
               throw new Error("Error Get Products")
           }

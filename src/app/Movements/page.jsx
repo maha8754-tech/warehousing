@@ -175,17 +175,17 @@ export default function Movements() {
 
                     <tbody className="grid gap-y-1 bg-white rounded-b-xl">
                         {/* Record #1 */}
-                        <tr className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
+                        <tr className="grid grid-cols-[8%_12%_4%_15%_12%_30%] border-b border-gray-800 mt-1 gap-7">
+                            <td className="pl-5 text-black">10</td>
+                            <td className="text-black">2026-12-13 10:24</td>
                             <td className="text-black">ghj</td>
                             <td className="text-black">ghj</td>
                             <td className="text-black">ghj</td>
-                            <td className="text-black">ghj</td>
-                            <td className="text-black">ghj</td>
-                            <td className="text-black">ghj</td>
+                            <td className="text-black">East Warehouse</td>
                         </tr>
                         {Movements.map((u) => (
                             // grid grid-cols-[10%_20%_14.5%_19%_13%_20%]
-                            <tr key={u.movementid} className="grid grid-cols-[10%_20%_12%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
+                            <tr key={u.movementid} className="grid grid-cols-[8%_12%_8%_15%_12%_12%_15%_3%] border-b border-gray-800 mt-1">
                                 <td className="pl-2 text-black">{u.movementid}</td>
                                 {/* flex font-semibold items-center gap-x-1 text-sm text-black bg-black/10 w-5.5 h-6.5 rounded-4xl" */}
                                 <td className=" text-black">{u.datetime}</td>
