@@ -11,8 +11,8 @@ import { useEffect, useState } from "react";
 
 // At or below this fraction of the minimum, the stock number is shown in red.
 const CRITICAL_RATIO = 0.75;
-
-export default function LowStockAlerts({ viewAllHref = process.env.NEXT_PUBLIC_API_URL`/api/Products?Status=Low%20Stock` }) {
+const baseQuery = process.env.NEXT_PUBLIC_API_URL;
+export default function LowStockAlerts({ viewAllHref = `${baseQuery}/api/Products?Status=Low%20Stock` }) {
   const [products, setProducts] = useState([])
 
   const loadGetProducts = async () => {
