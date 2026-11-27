@@ -2,17 +2,17 @@ import Link from "next/link";
 import { TriangleAlert } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const PRODUCTS = [
-  { id: "chair", name: "Office Chair", currentStock: 5, minStock: 10 },
-  { id: "hdd", name: "External HDD 1TB", currentStock: 2, minStock: 5 },
-  { id: "printer", name: "Printer HP", currentStock: 7, minStock: 10 },
-  { id: "monitor", name: 'Monitor 24"', currentStock: 3, minStock: 10 },
-];
+// const PRODUCTS = [
+//   { id: "chair", name: "Office Chair", currentStock: 5, minStock: 10 },
+//   { id: "hdd", name: "External HDD 1TB", currentStock: 2, minStock: 5 },
+//   { id: "printer", name: "Printer HP", currentStock: 7, minStock: 10 },
+//   { id: "monitor", name: 'Monitor 24"', currentStock: 3, minStock: 10 },
+// ];
 
 // At or below this fraction of the minimum, the stock number is shown in red.
 const CRITICAL_RATIO = 0.75;
 
-export default function LowStockAlerts({ viewAllHref = "/api/Products?Status=Low%20Stock" }) {
+export default function LowStockAlerts({ viewAllHref = process.env.NEXT_PUBLIC_API_URL`/api/Products?Status=Low%20Stock` }) {
   const [products, setProducts] = useState([])
 
   const loadGetProducts = async () => {
@@ -30,7 +30,7 @@ export default function LowStockAlerts({ viewAllHref = "/api/Products?Status=Low
       } catch (err) {
           setError(err.message)
       } finally {
-          setLoading(false)
+          // setLoading(false)
       }
   }
       useEffect(() => {
@@ -48,15 +48,15 @@ export default function LowStockAlerts({ viewAllHref = "/api/Products?Status=Low
       </header>
 
       {products.length === 0 ? (
-        <p className="p-6 text-center text-sm text-slate-500">No low stock products.</p>
+        <p className="p-6 text-center text-sm text-slate-500 text-black">No low stock products.</p>
       ) : (
         <div className="overflow-x-auto px-3 py-2">
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-50 text-slate-500">
               <tr>
-                <th scope="col" className="px-2 py-2 font-medium text-  ">Product</th>
-                <th scope="col" className="px-2 py-2 font-medium">Current Stock</th>
-                <th scope="col" className="px-2 py-2 font-medium">Min. Stock</th>
+                <th scope="col" className="px-2 py-2 font-medium text-black ">Product</th>
+                <th scope="col" className="px-2 py-2 font-medium text-black">Current Stock</th>
+                <th scope="col" className="px-2 py-2 font-medium text-black">Min. Stock</th>
               </tr>
             </thead>
 
@@ -76,7 +76,7 @@ export default function LowStockAlerts({ viewAllHref = "/api/Products?Status=Low
                       {u.quantity}
                       {isCritical && <span className="sr-only"> (critical)</span>}
                     </td>
-                    <td className="px-2 py-2.5 tabular-nums">{40}</td>
+                    <td className="px-2 py-2.5 tabular-nums text-black">{40}</td>
                   </tr>
                 );
               })}
